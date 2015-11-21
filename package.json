@@ -1,0 +1,21 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.8"
+  },
+  "devDependencies": {
+    "angular-ui-router": "^0.2.15",
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "ng-annotate-loader": "0.0.10",
+    "webpack": "^1.12.8"
+  }
+}
