@@ -6,7 +6,7 @@ module.exports = {
         'filename': './build/[name].js'
     },
     resolve: {
-        root: __dirname + '/frontend/src',
+        root: __dirname + '/src',
         extensions: ['', '.js']
     },
     module: {
