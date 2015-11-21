@@ -1,3 +1,3 @@
 export default {
-    BOOKS: 'books'
+    BOOKS: '/books'
 }
