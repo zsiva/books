@@ -6,17 +6,16 @@ module.exports = {
         'filename': './build/[name].js'
     },
     resolve: {
-        root: __dirname + '/src',
+        root: __dirname + '/frontend/src',
         extensions: ['', '.js']
     },
     module: {
         loaders: [
             {
                 test: /\.js?$/,
-                exclude: /(node_modules)/,
-                loader: 'babel'
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel?presets[]=es2015' // 'babel-loader' is also a legal name to reference
             }
         ]
-
     }
 }

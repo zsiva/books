@@ -1,8 +1,7 @@
 require('angular');
 require('angular-ui-router');
 
-const ROUTES = require('./constants/routes');
-const STATES = require('./constants/states');
+import {BOOKS} from './constants/routes';
 
 modules.exports = angular.module('books', [
     'ui-router'
