@@ -21,12 +21,13 @@ function createBookController(bookService) {
     vm.addBook = function () {
         bookService.addBook(vm.newBook);
         setupNewBook();
-    }
+    };
 
     function setupNewBook() {
         vm.newBook = {
             title: '',
-            author: ''
+            author: '',
+            bought_on: ''
         };
     }
 }

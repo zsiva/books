@@ -11,4 +11,9 @@ router.get('/api/books', function (req, res) {
     });
 });
 
+router.post('/api/createbook', function(req, res) {
+    new Book(req.body).save();
+    res.status(200).json(req.body);
+});
+
 module.exports = router;
