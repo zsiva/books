@@ -7,6 +7,11 @@ var routes = require('./routes');
 
 var baseHtml = path.join(__dirname, '../frontend/index.html');
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+
 app.use('/build', express.static(path.join(__dirname, '../frontend/build')));
 
 app.use('/', routes);
@@ -14,5 +19,6 @@ app.use('/', routes);
 app.get('/*', function (req, res) {
     res.sendFile(baseHtml);
 });
+
 
 app.listen(3000);
