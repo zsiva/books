@@ -16,9 +16,16 @@ router.post('/api/createbook', function(req, res) {
     res.status(200).json(req.body);
 });
 
-router.put('/api/updatebook', function(req, res) {
-    Book.findOneAndUpdate({_id: req.body._id}, req.body, function (err, book) {
+router.put('/api/updatebook/:book_id', function(req, res) {
+    Book.findOneAndUpdate({_id: req.params.book_id}, req.body, function (err, book) {
         res.send(book);
+    });
+});
+
+router.delete('/api/deletebook/:book_id', function(req, res) {
+    Book.findOneAndRemove({ _id: req.params.book_id }, function(err, books) {
+        if (err) throw err;
+        res.send(books);
     });
 });
 

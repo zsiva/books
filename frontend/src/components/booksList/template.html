@@ -12,7 +12,7 @@
         <td>{{book.author}}</td>
         <td>{{book.bought_on | date:'dd-MM-yyyy'}}</td>
         <td><button ng-click="vm.editBook(book)">Edit</button></td>
-        <td><button>Delete</button></td>
+        <td><button ng-click="vm.deleteBook(book._id)">Delete</button></td>
     </tr>
 </table>
 <update-book ng-hide="vm.hidden"></update-book>

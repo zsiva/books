@@ -17,8 +17,17 @@ function bookService($http) {
     };
 
     this.updateBook = function (newBook) {
-        console.log(newBook);
-        $http.put('/api/updatebook', newBook);
+        $http.put('/api/updatebook/' + newBook._id, newBook);
     };
+
+    this.deleteBook = function (bookId) {
+        $http.delete('/api/deletebook/' + bookId)
+            .success(function(data) {
+                console.log('deleting', bookId);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    }
 
 }
