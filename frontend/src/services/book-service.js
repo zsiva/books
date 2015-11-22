@@ -1,6 +1,6 @@
-module.exports = angular.module('book.bookService', []).service('bookService', bookService);
+module.exports = angular.module('books.bookService', []).service('bookService', bookService);
 
-function bookService() {
+function bookService($http) {
     var books = [];
 
     this.initBooks = function (newbooks) {
@@ -13,5 +13,12 @@ function bookService() {
 
     this.addBook = function (newBook) {
         books.push(newBook);
+        $http.post('/api/createbook/', newBook);
     };
+
+    this.updateBook = function (newBook) {
+        console.log(newBook);
+        $http.put('/api/updatebook', newBook);
+    };
+
 }

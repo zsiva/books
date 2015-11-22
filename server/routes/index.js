@@ -16,4 +16,10 @@ router.post('/api/createbook', function(req, res) {
     res.status(200).json(req.body);
 });
 
+router.put('/api/updatebook', function(req, res) {
+    Book.findOneAndUpdate({_id: req.body._id}, req.body, function (err, book) {
+        res.send(book);
+    });
+});
+
 module.exports = router;
