@@ -22,7 +22,6 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             resolve: {
                 books: function ($http, bookService) {
                     return $http.get('/api/books').then( function (res) {
-                        console.log(res);
                         bookService.initBooks(res.data);
                     });
                 }
