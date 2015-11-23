@@ -1,11 +1,13 @@
 require('angular');
 require('angular-ui-router');
+require('angular-ui-bootstrap');
 
 import ROUTES from './constants/routes';
 import STATES from './constants/states';
 
 const app = angular.module('books', [
     'ui.router',
+    'ui.bootstrap',
     require('./services/book-service').name,
     require('./components/booksList').name
 ]);

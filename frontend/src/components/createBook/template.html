@@ -1,6 +1,10 @@
 <hr style="margin: 20px 0">
-<h5>Add a new book</h5>
-<input ng-model="vm.newBook.title" placeholder="book name">
-<input ng-model="vm.newBook.author" placeholder="author name">
-<input ng-model="vm.newBook.bought_on" placeholder="bought date">
-<button ng-click="vm.addBook()">Add Book</button>
+<button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">Add a new book</button>
+
+<div uib-collapse="!isCollapsed">
+    <input ng-model="vm.newBook.title" placeholder="book name">
+    <input ng-model="vm.newBook.author" placeholder="author name">
+    <input ng-model="vm.newBook.bought_on" placeholder="bought date">
+    <button class="btn btn-primary" ng-click="vm.addBook()">Add Book</button>
+</div>
+<hr style="margin: 20px 0">

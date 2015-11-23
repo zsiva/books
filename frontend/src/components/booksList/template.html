@@ -1,25 +1,24 @@
 <h1>Books</h1>
-<hr style="margin: 20px 0">
-<h5>Filter by:</h5>
-<label>Any: <input ng-model="search.$"></label> <br>
-<label>Name <input ng-model="search.title"></label><br>
-<label>Author <input ng-model="search.author"></label><br>
-<hr style="margin: 20px 0">
-<table>
+<create-book></create-book>
+<table class="table">
     <tr>
         <th>Title</th>
         <th>Author</th>
         <th>Bought</th>
-        <th></th>
+        <th>Operations</th>
+    </tr>
+    <tr>
+        <td><input ng-model="search.$"></td>
+        <td><input ng-model="search.title"></td>
+        <td><input ng-model="search.bought_on"></td>
+        <td></td>
     </tr>
     <tr ng-repeat="book in vm.booksList | filter:search:strict">
         <td>{{book.title}}</td>
         <td>{{book.author}}</td>
         <td>{{book.bought_on | date:'dd-MM-yyyy'}}</td>
-        <td><button ng-click="vm.editBook(book)">Edit</button></td>
-        <td><button ng-click="vm.deleteBook(book._id)">Delete</button></td>
+        <td><button class="btn btn-primary" ng-click="vm.editBook(book)">Edit</button><button class="btn btn-primary" ng-click="vm.deleteBook(book._id)">Delete</button></td>
     </tr>
 </table>
-<create-book></create-book>
 <update-book ng-hide="vm.hidden"></update-book>
 
