@@ -12,8 +12,9 @@ router.get('/api/books', function (req, res) {
 });
 
 router.post('/api/createbook', function(req, res) {
-    new Book(req.body).save();
-    res.status(200).json(req.body);
+    var book = new Book(req.body);
+    book.save();
+    res.send(book);
 });
 
 router.put('/api/updatebook/:book_id', function(req, res) {

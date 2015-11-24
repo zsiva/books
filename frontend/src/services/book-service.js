@@ -11,15 +11,18 @@ function bookService($http) {
         return books;
     };
 
+    //TODO: validate fields
     this.addBook = function (newBook) {
-        books.push(newBook);
-        $http.post('/api/createbook/', newBook);
+        $http.post('/api/createbook/', newBook).success(function(book) {
+            books.push(book);
+        });
     };
 
     this.updateBook = function (newBook) {
         $http.put('/api/updatebook/' + newBook._id, newBook);
     };
 
+    //TODO: delete it from the view
     this.deleteBook = function (bookId) {
         $http.delete('/api/deletebook/' + bookId)
             .success(function(data) {
