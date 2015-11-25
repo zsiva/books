@@ -25,8 +25,10 @@ function bookService($http) {
     //TODO: delete it from the view
     this.deleteBook = function (bookId) {
         $http.delete('/api/deletebook/' + bookId)
-            .success(function(data) {
-                console.log('deleting', bookId);
+            .success(function() {
+                var pos = books.map(function(book) { return book._id; })
+                    .indexOf(bookId);
+                books.splice(pos, 1);
             })
             .error(function(data) {
                 console.log('Error: ' + data);

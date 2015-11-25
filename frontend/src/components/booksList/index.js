@@ -17,7 +17,7 @@ function bookListController (bookService, $scope) {
             data: bookData
         })
     };
-    //TODO reload the books
+
     vm.deleteBook = function(id) {
         bookService.deleteBook(id);
     };
