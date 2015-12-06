@@ -1,0 +1,21 @@
+<h3>Authors</h3>
+<table class="table">
+    <tr class="bg-primary">
+        <th>Name</th>
+        <th>Books</th>
+        <th>Actions</th>
+    </tr>
+    <tr>
+        <td><input ng-model="search.$"></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="author in vm.authorsList | filter:search:strict" ng-class-odd="'bg-info'">
+        <td>{{author.name}}</td>
+        <td><button class="btn btn-primary fa fa-eye" ng-click="">&nbsp;Show</button></td>
+        <td>
+          <button class="btn btn-primary fa fa-pencil" ng-click="">&nbsp;Edit</button>
+          <button class="btn btn-primary fa fa-trash" ng-click="">&nbsp;Delete</button>
+        </td>
+    </tr>
+</table>
