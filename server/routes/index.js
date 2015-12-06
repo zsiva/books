@@ -30,4 +30,25 @@ router.delete('/api/deletebook/:book_id', function(req, res) {
     });
 });
 
+router.get('/api/authors', function (req, res) {
+  var authors = [
+      {
+         "name": "Paolo Coelho"
+      },
+      {
+          "name": "Helene Gremillon"
+      },
+      {
+          "name": "Sarah Lark"
+      },
+      {
+        "name": "Markus Zusak"
+      },
+      {
+        "name": "Almudena de Arteaga"
+      }];
+    res.json(authors);
+});
+
+
 module.exports = router;

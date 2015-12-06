@@ -9,7 +9,9 @@ const app = angular.module('books', [
     'ui.router',
     'ui.bootstrap',
     require('./services/book-service').name,
-    require('./components/booksList').name
+    require('./components/booksList').name,
+    require('./components/authorsList').name,
+    require('./services/author-service').name
 ]);
 app.config(setUpRoutes);
 
@@ -29,8 +31,21 @@ function setUpRoutes ($stateProvider, $locationProvider) {
                 }
             }
         })
+        .state(STATES.AUTHORS_LIST, {
+            url: ROUTES.AUTHORS,
+            template: require('./components/authorsList/template.html'),
+            controller: 'authorListController',
+            controllerAs: 'vm',
+            resolve: {
+                authors: function ($http, authorService) {
+                    return $http.get('/api/authors').then( function (res) {
+                        authorService.initAuthors(res.data);
+                    });
+                }
+            }
+        })
         .state('index', {
             url: '/',
             template: 'Hello'
-        })
+        });
 }
