@@ -22,7 +22,6 @@ function bookService($http) {
         $http.put('/api/updatebook/' + newBook._id, newBook);
     };
 
-    //TODO: delete it from the view
     this.deleteBook = function (bookId) {
         $http.delete('/api/deletebook/' + bookId)
             .success(function() {

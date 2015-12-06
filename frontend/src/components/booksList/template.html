@@ -1,11 +1,11 @@
-<h1>Books</h1>
+<h3>Books</h3>
 <create-book></create-book>
 <table class="table">
-    <tr>
+    <tr class="bg-primary">
         <th>Title</th>
         <th>Author</th>
         <th>Bought</th>
-        <th>Operations</th>
+        <th>Actions</th>
     </tr>
     <tr>
         <td><input ng-model="search.$"></td>
@@ -13,12 +13,14 @@
         <td><input ng-model="search.bought_on"></td>
         <td></td>
     </tr>
-    <tr ng-repeat="book in vm.booksList | filter:search:strict">
+    <tr ng-repeat="book in vm.booksList | filter:search:strict" ng-class-odd="'bg-info'">
         <td>{{book.title}}</td>
         <td>{{book.author}}</td>
         <td>{{book.bought_on | date:'dd-MM-yyyy'}}</td>
-        <td><button class="btn btn-primary" ng-click="vm.editBook(book)">Edit</button><button class="btn btn-primary" ng-click="vm.deleteBook(book._id)">Delete</button></td>
+        <td>
+          <button class="btn btn-primary fa fa-pencil" ng-click="vm.editBook(book)">&nbsp;Edit</button>
+          <button class="btn btn-primary fa fa-trash" ng-click="vm.deleteBook(book._id)">&nbsp;Delete</button>
+        </td>
     </tr>
 </table>
 <update-book ng-hide="vm.hidden"></update-book>
-

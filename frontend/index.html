@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Books</title>
+    <title>Books Management</title>
     <script src="./build/app.js"></script>
     <base href="/">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body ng-app="books">
-    <div ui-view></div>
+<div class="bg-primary">
+    <span>Books Management: </span>
+    <div class="btn btn-primary fa fa-book">Books</div>
+    <div class="btn btn-primary fa fa-users">Authors</div>
+</div>
+<div ui-view></div>
 </body>
 </html>
