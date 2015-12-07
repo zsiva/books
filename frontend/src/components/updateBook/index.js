@@ -13,13 +13,17 @@ function updateBook() {
     };
 }
 
-function updateBookController(bookService, $scope) {
+function updateBookController(bookService, $scope, $filter) {
     const vm = this;
 
     $scope.$on('editBook', function (scopeDetails, dataFromParent) {
+        dataFromParent.data.bought_on = $filter('date')(new Date(dataFromParent.data.bought_on), 'dd-MM-yyyy');
         vm.editBook = dataFromParent.data;
     });
     vm.updateBook = function () {
         bookService.updateBook(vm.editBook);
+    };
+
+    vm.close = function () {
     };
 }
