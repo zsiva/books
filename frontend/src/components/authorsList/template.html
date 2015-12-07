@@ -12,7 +12,7 @@
     </tr>
     <tr ng-repeat="author in vm.authorsList | filter:search:strict" ng-class-odd="'bg-info'">
         <td>{{author.name}}</td>
-        <td><button class="btn btn-primary fa fa-eye" ng-click="">&nbsp;Show</button></td>
+        <td><button class="btn btn-primary fa fa-eye" ng-click="vm.showBooks(author._id)">&nbsp;Show</button></td>
         <td>
           <button class="btn btn-primary fa fa-pencil" ng-click="">&nbsp;Edit</button>
           <button class="btn btn-primary fa fa-trash" ng-click="">&nbsp;Delete</button>
