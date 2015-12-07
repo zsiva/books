@@ -5,7 +5,7 @@ module.exports = angular.module('books.list.bookListController', [
     ])
     .controller('bookListController', bookListController);
 
-function bookListController (bookService, $scope) {
+function bookListController (bookService, $scope, $uibModal) {
     const vm = this;
 
     vm.hidden = true;
@@ -15,10 +15,18 @@ function bookListController (bookService, $scope) {
         vm.hidden = false;
         $scope.$broadcast('editBook', {
             data: bookData
-        })
+        });
+        //TODO: edit data with a modal
+        /*$uibModal.open({
+          template: require('../updateBook/template.html'),
+        });*/
+
     };
 
     vm.deleteBook = function(id) {
         bookService.deleteBook(id);
     };
+
+    vm.closeModal = function () {
+    }
 }
