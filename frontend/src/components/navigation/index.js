@@ -15,7 +15,7 @@ function navigation() {
 
 function navigationController() {
     const vm = this;
-console.log('state: ',STATES.BOOKS_LIST);
+
     vm.booksState = STATES.BOOKS_LIST;
     vm.authorsState = STATES.AUTHORS_LIST;
 }
