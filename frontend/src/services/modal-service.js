@@ -1,5 +1,12 @@
 module.exports = angular.module('books.modalService', [])
-    .service('modalService', modalService);
+    .service('modalService', modalService)
+    .filter("sanitize", sanitize);
+
+function sanitize ($sce) {
+    return function(htmlCode){
+        return $sce.trustAsHtml(htmlCode);
+    }
+}
 
 function modalService($uibModal) {
 
@@ -13,6 +20,7 @@ function modalService($uibModal) {
     var modalOptions = {
         closeButtonText: 'Close',
         actionButtonText: 'OK',
+        displayAction: false,
         headerText: 'Proceed?',
         bodyText: 'Perform this action?'
     };
