@@ -11,7 +11,8 @@ const app = angular.module('books', [
     require('./services/book-service').name,
     require('./components/booksList').name,
     require('./components/authorsList').name,
-    require('./services/author-service').name
+    require('./services/author-service').name,
+    require('./components/navigation').name
 ]);
 app.config(setUpRoutes);
 
