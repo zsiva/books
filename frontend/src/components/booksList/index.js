@@ -13,22 +13,19 @@ function bookListController (bookService, $scope, modalService) {
 
     vm.editBook = function (bookData) {
         vm.hidden = false;
-        $scope.$broadcast('editBook', {
-            data: bookData
-        });
 
         var modalOptions = {
             closeButtonText: 'Cancel',
             actionButtonText: 'Save changes',
             headerText: 'Update book',
-            bodyText: '<update-book></update-book>',
+            bodyText: `<update-book edit-book='modalOptions.book'></update-book>`,
             displayAction: true,
-            ok: function () {
-              bookService.updateBook(bookData);
-            }
+            book: _.clone(bookData)
         };
 
-        modalService.showModal(modalOptions);
+        modalService.showModal(modalOptions).then(function (modalScope) {
+          bookService.updateBook(modalScope.modalOptions.book);
+        });
     };
 
     vm.deleteBook = function(id) {
