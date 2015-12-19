@@ -1,3 +1,4 @@
+import _ from 'lodash';
 module.exports = angular.module('books.modalService', [])
     .service('modalService', modalService)
     .filter("sanitize", sanitize);
@@ -10,14 +11,14 @@ function sanitize ($sce) {
 
 function modalService($uibModal) {
 
-    var modalDefaults = {
+    const modalDefaults = {
         backdrop: true,
         keyboard: true,
         modalFade: true,
         template: require('../components/modal/template.html')
     };
 
-    var modalOptions = {
+    const modalOptions = {
         closeButtonText: 'Close',
         actionButtonText: 'OK',
         displayAction: false,
@@ -27,25 +28,26 @@ function modalService($uibModal) {
 
     this.showModal = function (customModalOptions) {
         customModalOptions = customModalOptions || {};
-
         angular.extend(modalOptions, customModalOptions);
 
-        modalDefaults.controller = function ($scope, $uibModalInstance) {
+        let modalConfig = _.clone(modalDefaults);
+        if (customModalOptions.bodyText) {
+            modalConfig.template = modalConfig.template.replace('@body@', customModalOptions.bodyText)
+        }
+
+        modalConfig.controller = function ($scope, $uibModalInstance) {
             $scope.modalOptions = modalOptions;
 
-            if (!$scope.modalOptions.ok) {
-                $scope.modalOptions.ok = function () {
-                    //TODO: Add action
-                    $uibModalInstance.close();
-                };
-            }
+            $scope.modalOptions.ok = function () {
+                $uibModalInstance.close($scope);
+            };
 
-            $scope.modalOptions.close = function () {
+            $scope.modalOptions.closeModal = function () {
                 $uibModalInstance.dismiss('cancel');
             };
         };
 
-        return $uibModal.open(modalDefaults).result;
+        return $uibModal.open(modalConfig).result;
     };
 
 }
