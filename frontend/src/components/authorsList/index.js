@@ -16,6 +16,7 @@ function authorListController (authorService, $http, modalService) {
               closeButtonText: 'Close',
               actionButtonText: '',
               headerText: authorName + "'s Books",
+              displayAction: false,
               bodyText: bookList
           };
 

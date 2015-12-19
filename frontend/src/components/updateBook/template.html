@@ -1,12 +1,6 @@
-<div class="modal-header">
-  <h5>Edit book:</h5>
-</div>
-<div class="modal-body">
+<div>
   <input ng-model="vm.editBook.title" placeholder="book name">
   <input ng-model="vm.editBook.author_id.name" placeholder="author name" disabled>
+  <select-authors-list author-name="vm.editBook.author_id.name"></select-authors-list>
   <input ng-model="vm.editBook.bought_on" placeholder="bought date" pattern="dd-MM-yyyy">
-</div>
-<div class="modal-footer">
-  <button class="btn btn-warning" type="button" ng-click="vm.close()">Cancel</button>
-  <button class="btn btn-primary" ng-click="vm.updateBook()">Update</button>
 </div>

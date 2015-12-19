@@ -13,7 +13,9 @@ const app = angular.module('books', [
     require('./components/authorsList').name,
     require('./services/author-service').name,
     require('./components/navigation').name,
-    require('./services/modal-service').name
+    require('./services/modal-service').name,
+    require('./components/authorsSelect').name
+
 ]);
 app.config(setUpRoutes);
 
@@ -29,6 +31,11 @@ function setUpRoutes ($stateProvider, $locationProvider) {
                 books: function ($http, bookService) {
                     return $http.get('/api/books').then( function (res) {
                         bookService.initBooks(res.data);
+                    });
+                },
+                authors: function ($http, authorService) {
+                    return $http.get('/api/authors').then( function (res) {
+                        authorService.initAuthors(res.data);
                     });
                 }
             }
