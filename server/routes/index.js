@@ -26,8 +26,8 @@ router.post('/api/createbook', function(req, res) {
 });
 
 router.put('/api/updatebook/:book_id', function(req, res) {
-  Book.findOneAndUpdate({_id: req.params.book_id}, req.body, function (err, book) {
-        res.send(book);
+  Book.findOneAndUpdate({_id: req.params.book_id}, req.body, function () {
+        res.send(req.body);
     });
 });
 

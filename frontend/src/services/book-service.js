@@ -19,7 +19,12 @@ function bookService($http) {
     };
 
     this.updateBook = function (newBook) {
-        $http.put('/api/updatebook/' + newBook._id, newBook);
+        $http.put('/api/updatebook/' + newBook._id, newBook)
+          .then(res => {
+            const updatedBook = res.data;
+            const index = _.findIndex(books, '_id', updatedBook._id);
+            books.splice(index, 1, updatedBook);
+          });
     };
 
     this.deleteBook = function (bookId) {
