@@ -1,4 +1,6 @@
-module.exports = angular.module('books.list.authorsListController', [])
+module.exports = angular.module('books.list.authorsListController', [
+  require('components/createAuthor').name
+])
     .controller('authorListController', authorListController);
 
 function authorListController (authorService, $http, modalService) {
