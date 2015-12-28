@@ -1,0 +1,8 @@
+<hr style="margin: 20px 0">
+<button type="button" class="btn btn-primary fa-plus fa" ng-click="isCollapsed = !isCollapsed"> Add a new author</button>
+
+<div uib-collapse="!isCollapsed">
+    <input ng-model="vm.newAuthor.name" placeholder="author name">
+    <button class="btn btn-primary" ng-click="vm.addAuthor()">Add Author</button>
+</div>
+<hr style="margin: 20px 0">
