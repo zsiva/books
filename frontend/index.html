@@ -5,11 +5,14 @@
     <title>Books Management</title>
     <script src="./build/app.js"></script>
     <base href="/">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/html" href="./src/styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./src/styles/layout.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body ng-app="books">
   <navigation></navigation>
-  <div ui-view></div>
+  <div class="container">
+    <div ui-view></div>
+  </div>
 </body>
 </html>
