@@ -14,8 +14,8 @@ const app = angular.module('books', [
     require('./services/author-service').name,
     require('./components/navigation').name,
     require('./services/modal-service').name,
-    require('./components/authorsSelect').name
-
+    require('./components/authorsSelect').name,
+    require('./components/updateAuthor').name
 ]);
 app.config(setUpRoutes);
 
@@ -49,6 +49,19 @@ function setUpRoutes ($stateProvider, $locationProvider) {
                 authors: function ($http, authorService) {
                     return $http.get('/api/authors').then( function (res) {
                         authorService.initAuthors(res.data);
+                    });
+                }
+            }
+        })
+        .state(STATES.AUTHOR_EDIT, {
+            url: ROUTES.AUTHOR_EDIT,
+            template: require('./components/updateAuthor/template.html'),
+            controller: 'authorEditController',
+            controllerAs: 'vm',
+            resolve: {
+                authors: function ($http, authorService, $stateParams) {
+                    return $http.get('/api/authors/' + $stateParams.authorId).then( function (res) {
+                        authorService.initAuthors(res.data[0]);
                     });
                 }
             }
