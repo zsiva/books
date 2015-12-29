@@ -29,7 +29,16 @@ function bookListController (bookService, $scope, modalService) {
     };
 
     vm.deleteBook = function(id) {
+      var modalOptions = {
+          closeButtonText: 'Cancel',
+          actionButtonText: ' Delete',
+          headerText: 'Delete book',
+          bodyText: `Are you sure you want to delete it?`,
+          displayAction: true,
+          actionClass: 'btn-danger fa fa-trash'
+      };
+      modalService.showModal(modalOptions).then(function (modalScope) {
         bookService.deleteBook(id);
+      });
     };
-
 }
