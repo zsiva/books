@@ -1,4 +1,8 @@
 <select>
-  <option ng-repeat="author in vm.authorsList">{{author.name}}</option>
-  <option>Create New</option>
+    <option ng-repeat="author in vm.authorsList" ng-selected="author.name == vm.authorName">{{author.name}}</option>
+    <option ng-select="vm.hidden = !vm.hidden">Create new</option>
 </select>
+<div ng-hide="vm.hidden">
+    <input name="newAuthor">
+    <button class="btn btn-primary" ng-click="vm.createAuthor()">Create</button>
+</div>

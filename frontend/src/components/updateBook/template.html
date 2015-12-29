@@ -1,6 +1,5 @@
 <div>
   <input ng-model="vm.editBook.title" placeholder="book name">
-  <input ng-model="vm.editBook.author_id.name" placeholder="author name" disabled>
-  <select-authors-list author-name="vm.editBook.author_id.name"></select-authors-list>
+  <select-authors-list ng-model="vm.editBook.author_id.name" author-name="vm.editBook.author_id.name"></select-authors-list>
   <input ng-model="vm.editBook.bought_on" placeholder="bought date" pattern="dd-MM-yyyy">
 </div>

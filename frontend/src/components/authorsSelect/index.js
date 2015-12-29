@@ -18,6 +18,10 @@ function selectAuthorsList() {
 
 function selectAuthorsListController(authorService) {
     const vm = this;
-
+    vm.hidden = true;
     vm.authorsList = authorService.authorsList();
+
+    vm.openNewAuthor = function (author) {
+      console.log(author);
+    }
 }
