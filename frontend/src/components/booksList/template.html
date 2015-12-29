@@ -1,4 +1,4 @@
-<h3>Books</h3>
+<h3 class="bg-info main-title">Books</h3>
 <create-book></create-book>
 <table class="table">
     <tr class="bg-primary">
@@ -19,7 +19,7 @@
         <td>{{book.bought_on | date:'dd-MM-yyyy'}}</td>
         <td>
           <button class="btn btn-primary fa fa-pencil" ng-click="vm.editBook(book)">&nbsp;Edit</button>
-          <button class="btn btn-primary fa fa-trash" ng-click="vm.deleteBook(book._id)">&nbsp;Delete</button>
+          <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteBook(book._id)">&nbsp;Delete</button>
         </td>
     </tr>
 </table>
