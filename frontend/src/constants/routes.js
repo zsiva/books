@@ -1,4 +1,5 @@
 export default {
     BOOKS: '/books',
-    AUTHORS: '/authors'
+    AUTHORS: '/authors',
+    AUTHOR_EDIT: '/authors_edit/:authorId'
 }

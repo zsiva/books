@@ -38,11 +38,22 @@ router.delete('/api/deletebook/:book_id', function(req, res) {
     });
 });
 
-router.get('/api/authors', function (req, res) {
-      Author.find({}, function (err, authors) {
+router.get('/api/authors/:author_id?', function (req, res) {
+      var searchQuery = {};
+      if (req.params.author_id) {
+        searchQuery = {_id: req.params.author_id};
+      }
+      Author.find(searchQuery, function (err, authors) {
           if (err) throw err;
           res.status(200).json(authors);
       });
+});
+
+router.post('/api/createauthor', function(req, res) {
+    var author = new Author(req.body);
+    console.log('creating author');
+    author.save();
+    res.send(author);
 });
 
 
