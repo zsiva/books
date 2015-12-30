@@ -51,10 +51,15 @@ router.get('/api/authors/:author_id?', function (req, res) {
 
 router.post('/api/createauthor', function(req, res) {
     var author = new Author(req.body);
-    console.log('creating author');
     author.save();
     res.send(author);
 });
 
+router.delete('/api/deleteauthor/:author_id', function(req, res) {
+    Author.findOneAndRemove({ _id: req.params.author_id }, function(err, authors) {
+        if (err) throw err;
+        res.send(authors);
+    });
+});
 
 module.exports = router;

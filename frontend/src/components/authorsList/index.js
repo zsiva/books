@@ -26,4 +26,17 @@ function authorListController (authorService, $http, modalService) {
       });
     }
 
+    vm.deleteAuthor = function(id) {
+      var modalOptions = {
+          closeButtonText: 'Cancel',
+          actionButtonText: ' Delete',
+          headerText: 'Delete author',
+          bodyText: `Are you sure you want to delete it?`,
+          displayAction: true,
+          actionClass: 'btn-danger fa fa-trash'
+      };
+      modalService.showModal(modalOptions).then(function (modalScope) {
+        authorService.deleteAuthor(id);
+      });
+    };
 }

@@ -33,7 +33,7 @@ function bookListController (bookService, $scope, modalService) {
           closeButtonText: 'Cancel',
           actionButtonText: ' Delete',
           headerText: 'Delete book',
-          bodyText: `Are you sure you want to delete it?`,
+          bodyText: 'Are you sure you want to delete it?',
           displayAction: true,
           actionClass: 'btn-danger fa fa-trash'
       };

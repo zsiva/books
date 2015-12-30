@@ -25,4 +25,16 @@ function authorService($http) {
             authors.splice(index, 1, updatedAuthor);
           });
     };
+
+    this.deleteAuthor = function (authorId) {
+      $http.delete('/api/deleteauthor/' + authorId)
+          .success(function() {
+              var pos = authors.map(function(author) { return author._id; })
+                  .indexOf(authorId);
+              authors.splice(pos, 1);
+          })
+          .error(function(data) {
+              console.log('Error: ' + data);
+          });
+    };
 }

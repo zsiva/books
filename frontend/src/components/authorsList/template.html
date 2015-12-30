@@ -16,7 +16,7 @@
         <td><button class="btn btn-primary fa fa-eye" ng-click="vm.showBooks(author._id)">&nbsp;Show</button></td>
         <td>
           <button class="btn btn-primary fa fa-pencil" ng-click="" ui-sref="author-edit({ authorId: author._id })">&nbsp;Edit</button>
-          <button class="btn btn-danger fa fa-trash" ng-click="">&nbsp;Delete</button>
+          <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteAuthor(author._id)">&nbsp;Delete</button>
         </td>
     </tr>
 </table>
