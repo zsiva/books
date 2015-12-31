@@ -11,13 +11,19 @@ function authorListController (authorService, $http, modalService) {
 
     vm.showBooks = function (authorId) {
       return $http.get('/api/books/' + authorId).then( function (res) {
-          var authorName = res.data[0].author_id.name;
-          var bookList = Object.keys(res.data).map(function (key) {return res.data[key].title}).join('<br/>');
+          var authorName = '',
+              bookList = 'This author has currently no books';
+          if (res.data.length > 0) {
+              authorName = res.data[0].author_id.name + `'s `;
+              bookList = Object.keys(res.data).map(function (key) {
+                  return res.data[key].title
+              }).join('<br/>');
+          }
 
           var modalOptions = {
               closeButtonText: 'Close',
               actionButtonText: '',
-              headerText: authorName + "'s Books",
+              headerText: authorName + "Books",
               displayAction: false,
               bodyText: bookList
           };
