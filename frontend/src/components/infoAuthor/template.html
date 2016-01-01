@@ -1,0 +1,10 @@
+<h3 class="bg-info main-title">{{vm.authorName}}</h3>
+List of books
+<ul>
+<li ng-repeat="book in vm.booksList" ng-class-odd="'bg-info'">
+  {{book.title}}
+</li>
+</ul>
+<div class="pull-left">
+    <button class="btn btn btn-warning fa fa-chevron-left" ui-sref="authors-list">&nbsp;Back</button>
+</div>
