@@ -1,6 +1,6 @@
 import _ from 'lodash';
 module.exports = angular.module('books.list.authorEditController', [
-  require('components/createAuthor').name
+  require('components/authorCreate').name
 ])
 .controller('authorEditController', authorEditController);
 

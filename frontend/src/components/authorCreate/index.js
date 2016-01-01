@@ -1,19 +1,19 @@
-module.exports = angular.module('books.createAuthor', [
+module.exports = angular.module('books.authorCreate', [
     require('services/author-service').name
-]).directive('createAuthor', createAuthor);
+]).directive('authorCreate', authorCreate);
 
-function createAuthor() {
+function authorCreate() {
     return {
         restrict: 'E',
         bindToController: true,
         controllerAs: 'vm',
         scope: {},
         template: require('./template.html'),
-        controller: createAuthorController
+        controller: authorCreateController
     };
 }
 
-function createAuthorController(authorService) {
+function authorCreateController(authorService) {
     const vm = this;
 
     setupNewAuthor();

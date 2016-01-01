@@ -15,8 +15,8 @@ const app = angular.module('books', [
     require('./components/navigation').name,
     require('./services/modal-service').name,
     require('./components/authorsSelect').name,
-    require('./components/updateAuthor').name,
-    require('./components/infoAuthor').name
+    require('./components/authorEdit').name,
+    require('./components/authorInfo').name
 ]);
 app.config(setUpRoutes);
 
