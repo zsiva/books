@@ -12,7 +12,7 @@ router.get('/api/books/:author_id?', function (req, res) {
     }
     Book
     .find(searchQuery)
-    .populate('author_id')
+    .populate('author_id', 'name')
     .exec(function (err, books) {
       if (err) throw err;
       res.status(200).json(books);

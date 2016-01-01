@@ -3,20 +3,20 @@
 <table class="table">
     <tr class="bg-primary">
         <th>Name</th>
-        <th>Books</th>
         <th>Actions</th>
     </tr>
     <tr>
         <td><input ng-model="search.$"></td>
         <td></td>
-        <td></td>
     </tr>
     <tr ng-repeat="author in vm.authorsList | filter:search:strict" ng-class-odd="'bg-info'">
         <td>{{author.name}}</td>
-        <td><button class="btn btn-primary fa fa-eye" ng-click="vm.showBooks(author._id)">&nbsp;Show</button></td>
         <td>
-          <button class="btn btn-primary fa fa-pencil" ng-click="" ui-sref="author-edit({ authorId: author._id })">&nbsp;Edit</button>
-          <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteAuthor(author._id)">&nbsp;Delete</button>
+            <button class="btn btn-primary fa fa-eye" ui-sref="author-info({ authorId: author._id })">&nbsp;Show</button>
+            <button class="btn btn-primary fa fa-pencil" ng-click="" ui-sref="author-edit({ authorId: author._id })">
+                &nbsp;Edit
+            </button>
+            <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteAuthor(author._id)">&nbsp;Delete</button>
         </td>
     </tr>
 </table>
