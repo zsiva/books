@@ -1,22 +1,22 @@
 import _ from 'lodash';
-module.exports = angular.module('books.updateBook', [
+module.exports = angular.module('books.bookEdit', [
     require('services/book-service').name
-  ]).directive('updateBook', updateBook);
+  ]).directive('bookEdit', bookEdit);
 
-function updateBook() {
+function bookEdit() {
     return {
         restrict: 'E',
         bindToController: true,
         controllerAs: 'vm',
         template: require('./template.html'),
-        controller: updateBookController,
+        controller: bookEditController,
         scope: {
           editBook: '='
         }
     };
 }
 
-function updateBookController(bookService, $scope, $filter) {
+function bookEditController() {
     const vm = this;
 
 }

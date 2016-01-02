@@ -7,7 +7,7 @@ module.exports = angular.module('books.list.authorEditController', [
 function authorEditController (authorService, $http) {
     const vm = this;
 
-    vm.author = authorService.authorsList();
+    vm.author = authorService.getAuthorsList();
 
     vm.updateAuthor = function (authorId) {
       return $http.get('/api/books/' + authorId).then( function (res) {

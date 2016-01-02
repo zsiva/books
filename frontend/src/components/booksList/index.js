@@ -1,7 +1,7 @@
 module.exports = angular.module('books.list.bookListController', [
     require('services/book-service').name,
-    require('components/createBook').name,
-    require('components/updateBook').name
+    require('components/bookCreate').name,
+    require('components/bookEdit').name
     ])
     .controller('bookListController', bookListController);
 
@@ -17,8 +17,8 @@ function bookListController (bookService, $scope, modalService) {
         var modalOptions = {
             closeButtonText: 'Cancel',
             actionButtonText: 'Save changes',
-            headerText: 'Update book',
-            bodyText: `<update-book edit-book='modalOptions.book'></update-book>`,
+            headerText: 'Edit book',
+            bodyText: '<book-edit edit-book="modalOptions.book"></book-edit>',
             displayAction: true,
             book: _.clone(bookData)
         };
