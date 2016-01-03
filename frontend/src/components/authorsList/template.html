@@ -1,22 +1,28 @@
 <h3 class="bg-info main-title">Authors</h3>
 <author-create></author-create>
-<table class="table">
-    <tr class="bg-primary">
-        <th>Name</th>
-        <th>Actions</th>
-    </tr>
-    <tr>
-        <td><input ng-model="search.$"></td>
-        <td></td>
-    </tr>
-    <tr ng-repeat="author in vm.authorsList | filter:search:strict" ng-class-odd="'bg-info'">
-        <td>{{author.name}}</td>
-        <td>
-            <button class="btn btn-primary fa fa-eye" ui-sref="author-info({ authorId: author._id })">&nbsp;Show</button>
-            <button class="btn btn-primary fa fa-pencil" ng-click="" ui-sref="author-edit({ authorId: author._id })">
-                &nbsp;Edit
-            </button>
-            <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteAuthor(author._id)">&nbsp;Delete</button>
-        </td>
-    </tr>
-</table>
+<div class="form-group">
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search authors" ng-model="search.$">
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="author in vm.authorsList | filter:search:strict | orderBy: 'name'" ng-class-odd="'bg-info'">
+            <td>{{author.name}}</td>
+            <td>
+                <button class="btn btn-primary fa fa-eye" ui-sref="author-info({ authorId: author._id })">&nbsp;Show
+                </button>
+                <button class="btn btn-primary fa fa-pencil" ng-click=""
+                        ui-sref="author-edit({ authorId: author._id })">
+                    &nbsp;Edit
+                </button>
+                <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteAuthor(author._id)">&nbsp;Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,25 +1,27 @@
 <h3 class="bg-info main-title">Books</h3>
 <book-create></book-create>
-<table class="table">
-    <tr class="bg-primary">
-        <th>Title</th>
-        <th>Author</th>
-        <th>Bought</th>
-        <th>Actions</th>
-    </tr>
-    <tr>
-        <td><input ng-model="search.$"></td>
-        <td><input ng-model="search.title"></td>
-        <td><input ng-model="search.bought_on"></td>
-        <td></td>
-    </tr>
-    <tr ng-repeat="book in vm.booksList | filter:search:strict" ng-class-odd="'bg-info'">
-        <td>{{book.title}}</td>
-        <td>{{book.author_id.name}}</td>
-        <td>{{book.bought_on | date:'dd-MM-yyyy'}}</td>
-        <td>
-          <button class="btn btn-primary fa fa-pencil" ng-click="vm.editBook(book)">&nbsp;Edit</button>
-          <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteBook(book._id)">&nbsp;Delete</button>
-        </td>
-    </tr>
-</table>
+<div class="form-group">
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search books" ng-model="search.$">
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr class="bg-primary">
+            <th>Title</th>
+            <th>Author</th>
+            <th>Bought</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="book in vm.booksList | filter:search:strict | orderBy: 'title'" ng-class-odd="'bg-info'">
+            <td>{{book.title}}</td>
+            <td>{{book.author_id.name}}</td>
+            <td>{{book.bought_on | date:'dd-MM-yyyy'}}</td>
+            <td>
+                <button class="btn btn-primary fa fa-pencil" ng-click="vm.editBook(book)">&nbsp;Edit</button>
+                <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteBook(book._id)">&nbsp;Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

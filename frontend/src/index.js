@@ -56,7 +56,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
         })
         .state(STATES.AUTHOR_EDIT, {
             url: ROUTES.AUTHOR_EDIT,
-            template: require('./components/updateAuthor/template.html'),
+            template: require('./components/authorEdit/template.html'),
             controller: 'authorEditController',
             controllerAs: 'vm',
             resolve: {
@@ -69,7 +69,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
         })
         .state(STATES.AUTHOR_INFO, {
             url: ROUTES.AUTHOR_INFO,
-            template: require('./components/infoAuthor/template.html'),
+            template: require('./components/authorInfo/template.html'),
             controller: 'authorInfoController',
             controllerAs: 'vm',
             resolve: {
