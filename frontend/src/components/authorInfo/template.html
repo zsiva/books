@@ -13,7 +13,7 @@
         <tr ng-repeat="book in vm.booksList | orderBy:'title'" ng-class-odd="'bg-info'">
             <td>{{$index + 1}}</td>
             <td>{{book.title}}</td>
-            <td>category</td>
+            <td>{{book.category}}</td>
         </tr>
         </tbody>
     </table>

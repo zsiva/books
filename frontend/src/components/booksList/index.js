@@ -9,7 +9,7 @@ function bookListController (bookService, $scope, modalService) {
     const vm = this;
 
     vm.hidden = true;
-    vm.booksList = bookService.booksList();
+    vm.booksList = bookService.getBooksList();
 
     vm.editBook = function (bookData) {
         vm.hidden = false;

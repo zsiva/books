@@ -7,7 +7,7 @@ function bookService($http) {
         books = newbooks;
     };
 
-    this.booksList = function () {
+    this.getBooksList = function () {
         return books;
     };
 
