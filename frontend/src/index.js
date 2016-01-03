@@ -10,6 +10,7 @@ const app = angular.module('books', [
     'ui.bootstrap',
     require('./services/book-service').name,
     require('./components/booksList').name,
+    require('./components/bookInfo').name,
     require('./components/authorsList').name,
     require('./services/author-service').name,
     require('./components/navigation').name,
@@ -30,13 +31,26 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             controllerAs: 'vm',
             resolve: {
                 books: function ($http, bookService) {
-                    return $http.get('/api/books').then( function (res) {
+                    return $http.get('/api/authorbooks').then( function (res) {
                         bookService.initBooks(res.data);
                     });
                 },
                 authors: function ($http, authorService) {
                     return $http.get('/api/authors').then( function (res) {
                         authorService.initAuthors(res.data);
+                    });
+                }
+            }
+        })
+        .state(STATES.BOOK_INFO, {
+            url: ROUTES.BOOK_INFO,
+            template: require('./components/bookInfo/template.html'),
+            controller: 'bookInfoController',
+            controllerAs: 'vm',
+            resolve: {
+                bookData: function ($http, $stateParams) {
+                    return $http.get('/api/books/' + $stateParams.bookId).then( function (res) {
+                      return res.data[0];
                     });
                 }
             }
@@ -74,7 +88,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             controllerAs: 'vm',
             resolve: {
                 authorData: function ($http, $stateParams) {
-                    return $http.get('/api/books/' + $stateParams.authorId).then( function (res) {
+                    return $http.get('/api/authorbooks/' + $stateParams.authorId).then( function (res) {
                       return res.data;
                     });
                 }
