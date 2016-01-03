@@ -5,7 +5,21 @@ var mongoose = require('mongoose');
 var Book = mongoose.model('Book');
 var Author = mongoose.model('Author');
 
-router.get('/api/books/:author_id?', function (req, res) {
+router.get('/api/books/:book_id?', function (req, res) {
+    var searchQuery = {};
+    if (req.params.book_id) {
+      searchQuery = {_id: req.params.book_id};
+    }
+    Book
+    .find(searchQuery)
+    .populate('author_id', 'name')
+    .exec(function (err, books) {
+      if (err) throw err;
+      res.status(200).json(books);
+    });
+});
+
+router.get('/api/authorbooks/:author_id?', function (req, res) {
     var searchQuery = {};
     if (req.params.author_id) {
       searchQuery = {author_id: req.params.author_id};
@@ -20,6 +34,7 @@ router.get('/api/books/:author_id?', function (req, res) {
 });
 
 router.post('/api/createbook', function(req, res) {
+    console.log('book: ', req.body);
     var book = new Book(req.body);
     book.save();
     res.send(book);
