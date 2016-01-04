@@ -55,6 +55,12 @@ function setUpRoutes ($stateProvider, $locationProvider) {
                 }
             }
         })
+        .state(STATES.BOOK_CREATE, {
+            url: ROUTES.BOOK_CREATE,
+            template: require('./components/bookCreate/template.html'),
+            controller: 'bookCreateController',
+            controllerAs: 'vm'
+        })
         .state(STATES.AUTHORS_LIST, {
             url: ROUTES.AUTHORS,
             template: require('./components/authorsList/template.html'),

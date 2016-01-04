@@ -34,7 +34,6 @@ router.get('/api/authorbooks/:author_id?', function (req, res) {
 });
 
 router.post('/api/createbook', function(req, res) {
-    console.log('book: ', req.body);
     var book = new Book(req.body);
     book.save();
     res.send(book);

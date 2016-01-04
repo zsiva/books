@@ -1,10 +1,33 @@
-<hr style="margin: 20px 0">
-<button type="button" class="btn btn-primary fa-plus fa" ng-click="isCollapsed = !isCollapsed"> Add a new book</button>
+<div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-book"></i></div>
+          <input type="text" class="form-control" ng-model="vm.newBook.title" placeholder="Book name">
+      </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+        <input type="text" class="form-control" ng-model="vm.newBook.bought_on" placeholder="Bought date">
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-tags"></i></div>
+        <input type="text" class="form-control" ng-model="vm.newBook.category" placeholder="Category">
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-file"></i></div>
+        <input type="text" class="form-control" ng-model="vm.newBook.format" placeholder="Format">
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-star"></i></div>
+        <input type="number" class="form-control" ng-model="vm.newBook.rating" placeholder="Rating">
+    </div>
+    <label>Author:</label>
+    <select-authors-list ng-model="vm.newBook.author_id"></select-authors-list>
 
-<div uib-collapse="!isCollapsed">
-    <input ng-model="vm.newBook.title" placeholder="book name">
-    <input ng-model="vm.newBook.author_id" placeholder="author name">
-    <input ng-model="vm.newBook.bought_on" placeholder="bought date">
-    <button class="btn btn-primary" ng-click="vm.addBook()">Add Book</button>
-</div>
-<hr style="margin: 20px 0">
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea ng-model="vm.newBook.description" class="form-control" rows="3" id="description"></textarea>
+    </div>
+    <div class="pull-left">
+        <button class="btn btn btn-warning fa fa-chevron-left" ui-sref="books-list">&nbsp;Back</button>
+    </div>
+    <div class="pull-right">
+    <button class="btn btn-primary fa-plus fa" ng-click="vm.addBook()">&nbsp;Add Book</button>
+  </div>
