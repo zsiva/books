@@ -1,7 +1,7 @@
 module.exports = angular.module('books.bookCreateController', [])
     .controller('bookCreateController', bookCreateController);
 
-function bookCreateController() {
+function bookCreateController(bookService) {
   const vm = this;
   setupNewBook();
 

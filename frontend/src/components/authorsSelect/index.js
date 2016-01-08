@@ -9,7 +9,8 @@ function selectAuthorsList() {
         bindToController: true,
         controllerAs: 'vm',
         scope: {
-          authorName: '='
+          authorName: '=',
+          selectModel: '='
         },
         template: require('./template.html'),
         controller: selectAuthorsListController
