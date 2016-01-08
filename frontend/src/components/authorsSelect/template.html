@@ -1,6 +1,8 @@
 <div class="form-group">
-    <select class="form-control">
-      <option ng-repeat="author in vm.authorsList" ng-selected="author.name == vm.authorName" value="{{author._id}}">{{author.name}}</option>
+    <select class="form-control" ng-model="vm.selectModel"
+            ng-options="author._id as author.name for author in vm.authorsList"
+            ng-selected="author.name == vm.authorName">
+        <option></option>
     </select>
 </div>
 <div ng-hide="vm.hidden">
