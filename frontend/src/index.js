@@ -1,6 +1,7 @@
 require('angular');
 require('angular-ui-router');
 require('angular-ui-bootstrap');
+require('angular-slugify');
 
 import ROUTES from './constants/routes';
 import STATES from './constants/states';
@@ -8,6 +9,7 @@ import STATES from './constants/states';
 const app = angular.module('books', [
     'ui.router',
     'ui.bootstrap',
+    'slugifier',
     require('./services/book-service').name,
     require('./components/booksList').name,
     require('./components/bookInfo').name,
