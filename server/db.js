@@ -9,7 +9,8 @@ var Book = new Schema({
     category: String,
     description: String,
     format: String,
-    rating: Number
+    rating: Number,
+    language: String
 });
 
 var Author = Schema({

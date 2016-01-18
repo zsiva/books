@@ -1,9 +1,15 @@
 <h3 class="bg-info main-title">{{vm.bookData.title}}</h3>
 <div>
-  Author: {{vm.bookData.author_id.name}} <br />
-  Bought: {{vm.bookData.bought_on | date:'dd-MM-yyyy'}} <br />
-  Category: {{vm.bookData.category}} <br />
-  Description: {{vm.bookData.description}}
+    <h4>Author</h4>
+    <p>{{vm.bookData.author_id.name}}</p>
+  <h4>Bought:</h4>
+    <p> {{vm.bookData.bought_on | date:'dd-MM-yyyy'}} </p>
+  <h4>Category:</h4>
+  <p>{{vm.bookData.category}} </p>
+  <h4>Description:</h4>
+  <p>{{vm.bookData.description}}</p>
+  <h4>Language:</h4>
+  <p>{{vm.bookData.language}}</p>
 </div>
 <div class="pull-left">
     <button class="btn btn btn-warning fa fa-chevron-left" ui-sref="books-list">&nbsp;Back</button>

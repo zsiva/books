@@ -1,6 +1,6 @@
 <div class="form-group">
     <select class="form-control" ng-model="vm.selectModel"
-            ng-options="author._id as author.name for author in vm.authorsList"
+            ng-options="author._id as author.name for author in vm.authorsList | orderBy:['name']"
             ng-selected="author.name == vm.authorName">
         <option></option>
     </select>
