@@ -15,7 +15,7 @@
         <tr ng-repeat="author in vm.authorsList | filter:search:strict | orderBy: 'name'" ng-class-odd="'bg-info'">
             <td>{{author.name}}</td>
             <td>
-                <button class="btn btn-primary fa fa-eye" ui-sref="author-info({ authorId: author._id })">&nbsp;Show
+                <button class="btn btn-primary fa fa-eye" ui-sref="author-info({ authorId: author._id, authorSlug: author.slug })">&nbsp;Show
                 </button>
                 <button class="btn btn-primary fa fa-pencil" ng-click=""
                         ui-sref="author-edit({ authorId: author._id })">

@@ -49,8 +49,13 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             template: require('./components/bookInfo/template.html'),
             controller: 'bookInfoController',
             controllerAs: 'vm',
+            params: {
+              bookSlug: '',
+              bookId: ''
+            },
             resolve: {
                 bookData: function ($http, $stateParams) {
+                  console.log($stateParams);
                     return $http.get('/api/books/' + $stateParams.bookId).then( function (res) {
                       return res.data[0];
                     });
@@ -91,6 +96,10 @@ function setUpRoutes ($stateProvider, $locationProvider) {
         })
         .state(STATES.AUTHOR_INFO, {
             url: ROUTES.AUTHOR_INFO,
+            params: {
+              authorSlug: '',
+              authorId: ''
+            },
             template: require('./components/authorInfo/template.html'),
             controller: 'authorInfoController',
             controllerAs: 'vm',

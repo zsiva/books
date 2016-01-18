@@ -20,7 +20,7 @@
             <td>{{book.author_id.name}}</td>
             <td>{{book.category}}</td>
             <td>
-                <button class="btn btn-primary fa fa-eye" ui-sref="book-info({ bookId: book._id })">&nbsp;Show</button>
+                <button class="btn btn-primary fa fa-eye" ui-sref="book-info({ bookId: book._id, bookSlug: book.slug })">&nbsp;Show</button>
                 <button class="btn btn-primary fa fa-pencil" ng-click="vm.editBook(book)">&nbsp;Edit</button>
                 <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteBook(book._id)">&nbsp;Delete</button>
             </td>
