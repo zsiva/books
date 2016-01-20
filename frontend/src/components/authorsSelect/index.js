@@ -23,6 +23,5 @@ function selectAuthorsListController(authorService) {
     vm.authorsList = authorService.getAuthorsList();
 
     vm.openNewAuthor = function (author) {
-      console.log(author);
     }
 }

@@ -55,7 +55,6 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             },
             resolve: {
                 bookData: function ($http, $stateParams) {
-                  console.log($stateParams);
                     return $http.get('/api/books/' + $stateParams.bookId).then( function (res) {
                       return res.data[0];
                     });

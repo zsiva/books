@@ -10,12 +10,29 @@
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr class="bg-primary">
-            <th>Title</th>
-            <th>Author</th>
-            <th>Category</th>
+            <th ng-click="vm.sortType = 'title'; vm.sortReverse = !vm.sortReverse">
+                Title
+                <span ng-show="vm.sortType == 'title'">
+                  <span class="fa fa-caret-down pull-right" ng-show="!vm.sortReverse"></span>
+                  <span class="fa fa-caret-up pull-right" ng-show="vm.sortReverse"></span>
+                </span>
+            </th>
+            <th ng-click="vm.sortType = 'author'; vm.sortReverse = !vm.sortReverse">
+              Author
+              <span ng-show="vm.sortType == 'author'">
+                <span ng-show="!vm.sortReverse" class="fa fa-caret-down pull-right"></span>
+                <span ng-show="vm.sortReverse" class="fa fa-caret-up pull-right"></span>
+              </span>
+            </th>
+            <th ng-click="vm.sortType = 'category'; vm.sortReverse = !vm.sortReverse">Category
+              <span ng-show="vm.sortType == 'category'">
+                <span ng-show="!vm.sortReverse" class="fa fa-caret-down pull-right"></span>
+                <span ng-show="vm.sortReverse" class="fa fa-caret-up pull-right"></span>
+              </span>
+            </th>
             <th>Actions</th>
         </tr>
-        <tr ng-repeat="book in vm.booksList | filter:search:strict | orderBy: 'title'" ng-class-odd="'bg-info'">
+        <tr ng-repeat="book in vm.booksList | filter:search:strict | orderBy:vm.sortType:vm.sortReverse" ng-class-odd="'bg-info'">
             <td>{{book.title}}</td>
             <td>{{book.author_id.name}}</td>
             <td>{{book.category}}</td>

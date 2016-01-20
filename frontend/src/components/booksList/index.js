@@ -11,6 +11,9 @@ function bookListController (bookService, $scope, modalService) {
     vm.hidden = true;
     vm.booksList = bookService.getBooksList();
 
+    vm.sortType     = 'title';
+    vm.sortReverse  = false;
+
     vm.editBook = function (bookData) {
         vm.hidden = false;
 

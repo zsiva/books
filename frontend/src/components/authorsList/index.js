@@ -7,6 +7,9 @@ function authorListController(authorService, $http, modalService) {
     const vm = this;
 
     vm.hidden = true;
+    vm.sortType     = 'name';
+    vm.sortReverse  = false;
+
     vm.authorsList = authorService.getAuthorsList();
 
     vm.showBooks = function (authorId) {
