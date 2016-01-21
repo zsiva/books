@@ -11,15 +11,16 @@ const app = angular.module('books', [
     'ui.bootstrap',
     'slugifier',
     require('./services/book-service').name,
-    require('./components/booksList').name,
-    require('./components/bookInfo').name,
-    require('./components/authorsList').name,
-    require('./services/author-service').name,
+    require('./components/books/list').name,
+    require('./components/books/info').name,
+    require('./components/authors/list').name,
     require('./components/navigation').name,
-    require('./services/modal-service').name,
-    require('./components/authorsSelect').name,
-    require('./components/authorEdit').name,
-    require('./components/authorInfo').name
+    require('./components/authors/authorsSelect').name,
+    require('./components/authors/edit').name,
+    require('./components/authors/info').name,
+    require('./services/author-service').name,
+    require('./services/modal-service').name
+
 ]);
 app.config(setUpRoutes);
 
@@ -28,7 +29,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
     $stateProvider
         .state(STATES.BOOKS_LIST, {
             url: ROUTES.BOOKS,
-            template: require('./components/booksList/template.html'),
+            template: require('./components/books/list/template.html'),
             controller: 'bookListController',
             controllerAs: 'vm',
             resolve: {
@@ -46,7 +47,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
         })
         .state(STATES.BOOK_INFO, {
             url: ROUTES.BOOK_INFO,
-            template: require('./components/bookInfo/template.html'),
+            template: require('./components/books/info/template.html'),
             controller: 'bookInfoController',
             controllerAs: 'vm',
             params: {
@@ -63,13 +64,13 @@ function setUpRoutes ($stateProvider, $locationProvider) {
         })
         .state(STATES.BOOK_CREATE, {
             url: ROUTES.BOOK_CREATE,
-            template: require('./components/bookCreate/template.html'),
+            template: require('./components/books/bookCreate/template.html'),
             controller: 'bookCreateController',
             controllerAs: 'vm'
         })
         .state(STATES.AUTHORS_LIST, {
             url: ROUTES.AUTHORS,
-            template: require('./components/authorsList/template.html'),
+            template: require('./components/authors/list/template.html'),
             controller: 'authorListController',
             controllerAs: 'vm',
             resolve: {
@@ -82,7 +83,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
         })
         .state(STATES.AUTHOR_EDIT, {
             url: ROUTES.AUTHOR_EDIT,
-            template: require('./components/authorEdit/template.html'),
+            template: require('./components/authors/edit/template.html'),
             controller: 'authorEditController',
             controllerAs: 'vm',
             resolve: {
@@ -99,7 +100,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
               authorSlug: '',
               authorId: ''
             },
-            template: require('./components/authorInfo/template.html'),
+            template: require('./components/authors/info/template.html'),
             controller: 'authorInfoController',
             controllerAs: 'vm',
             resolve: {

@@ -1,7 +1,7 @@
 module.exports = angular.module('books.list.bookListController', [
     require('services/book-service').name,
-    require('components/bookCreate').name,
-    require('components/bookEdit').name
+    require('components/books/bookCreate').name,
+    require('components/books/edit').name
     ])
     .controller('bookListController', bookListController);
 
