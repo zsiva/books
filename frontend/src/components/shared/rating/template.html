@@ -1,5 +1,5 @@
 <div class="rating">
   <a ng-repeat="star in vm.stars">
-    <i class="fa" ng-class="vm.starClass(star, $index)"></i>
+    <i class="fa" ng-class="star.full ? 'fa-star' : 'fa-star-o'"></i>
   </a>
 </div>

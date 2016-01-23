@@ -29,14 +29,6 @@ function ratingController($scope) {
       }
     };
 
-    vm.starClass = function(star, idx) {
-      var starClass = 'fa-star-o';
-      if (star.full) {
-        starClass = 'fa-star';
-      }
-      return starClass;
-    };
-
     $scope.$watch('vm.score', function(newValue, oldValue) {
       if (newValue !== null && newValue !== undefined) {
         vm.updateStars();
