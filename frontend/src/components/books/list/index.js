@@ -14,23 +14,6 @@ function bookListController (bookService, $scope, modalService) {
     vm.sortType     = 'title';
     vm.sortReverse  = false;
 
-    vm.editBook = function (bookData) {
-        vm.hidden = false;
-
-        var modalOptions = {
-            closeButtonText: 'Cancel',
-            actionButtonText: 'Save changes',
-            headerText: 'Edit book',
-            bodyText: '<book-edit edit-book="modalOptions.book"></book-edit>',
-            displayAction: true,
-            book: _.clone(bookData)
-        };
-
-        modalService.showModal(modalOptions).then(function (modalScope) {
-          bookService.updateBook(modalScope.modalOptions.book);
-        });
-    };
-
     vm.deleteBook = function(id) {
       var modalOptions = {
           closeButtonText: 'Cancel',

@@ -1,5 +1,5 @@
 <h3 class="bg-info main-title">{{vm.bookData.title}}</h3>
-<div>
+<div ng-hide="vm.editorEnabled">
     <h4>Author</h4>
     <p>{{vm.bookData.author_id.name}}</p>
   <h4>Bought:</h4>
@@ -11,6 +11,45 @@
   <h4>Language:</h4>
   <p>{{vm.bookData.language}}</p>
 </div>
+<div ng-show="vm.editorEnabled">
+<div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-book"></i></div>
+          <input type="text" class="form-control" ng-model="vm.bookData.title" placeholder="Book name">
+      </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+        <input type="text" class="form-control" ng-model="vm.bookData.bought_on" placeholder="Bought date">
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-tags"></i></div>
+        <input type="text" class="form-control" ng-model="vm.bookData.category" placeholder="Category">
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-file"></i></div>
+        <input type="text" class="form-control" ng-model="vm.bookData.format" placeholder="Format">
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-language"></i></div>
+        <input type="text" class="form-control" ng-model="vm.bookData.language" placeholder="Language">
+    </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-star"></i></div>
+        <input type="number" class="form-control" ng-model="vm.bookData.rating" placeholder="Rating">
+    </div>
+    <label>Author:</label>
+    <select-authors-list ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id"></select-authors-list>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea ng-model="vm.bookData.description" class="form-control" rows="3" id="description"></textarea>
+    </div>
+  </div>
+</div>
 <div class="pull-left">
     <button class="btn btn btn-warning fa fa-chevron-left" ui-sref="books-list">&nbsp;Back</button>
+</div>
+<div class="pull-right">
+    <button ng-hide="vm.editorEnabled" ng-click="vm.editorEnabled=!vm.editorEnabled" class="btn btn-primary fa fa-pencil">&nbsp;Edit</button>
+    <button ng-show="vm.editorEnabled" ng-click="vm.editorEnabled=!vm.editorEnabled" class="btn btn-danger fa fa-times">&nbsp;Cancel</button>
+    <button ng-show="vm.editorEnabled" ng-click="vm.saveBook()" class="btn btn-primary fa fa-save">&nbsp;Save</button>
 </div>
