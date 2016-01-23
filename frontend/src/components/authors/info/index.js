@@ -4,6 +4,8 @@ module.exports = angular.module('books.authorInfoController', [])
 function authorInfoController(authorData) {
     const vm = this;
 
-    vm.authorName = authorData[0].author_id.name;
+    if(authorData.length > 0) {
+      vm.authorName = authorData[0].author_id.name;
+    }
     vm.booksList = authorData;
 }

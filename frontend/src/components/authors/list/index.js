@@ -12,30 +12,7 @@ function authorListController(authorService, $http, modalService) {
 
     vm.authorsList = authorService.getAuthorsList();
 
-    vm.showBooks = function (authorId) {
-        return $http.get('/api/books/' + authorId).then(function (res) {
-            var authorName = '',
-                bookList = 'This author has currently no books';
-            if (res.data.length > 0) {
-                authorName = res.data[0].author_id.name + "'s ";
-                bookList = Object.keys(res.data).map(function (key) {
-                    return res.data[key].title
-                }).join('<br/>');
-            }
-
-            var modalOptions = {
-                closeButtonText: 'Close',
-                actionButtonText: '',
-                headerText: authorName + "Books",
-                displayAction: false,
-                bodyText: bookList
-            };
-
-            modalService.showModal(modalOptions);
-        });
-    };
-
-    vm.deleteAuthor = function (id) {
+    vm.deleteAuthor = function (authorId) {
         var modalOptions = {
             closeButtonText: ' Cancel',
             actionButtonText: ' Delete',
@@ -44,8 +21,23 @@ function authorListController(authorService, $http, modalService) {
             displayAction: true,
             actionClass: 'btn-danger fa fa-trash'
         };
-        modalService.showModal(modalOptions).then(function () {
-            authorService.deleteAuthor(id);
-        });
+
+        $http.get('/api/authorbooks/' + authorId).then(function (res) {
+            var authorName = '',
+                hasBooks = '<br />This author has currently no books',
+                bookList = '';
+            if (res.data.length > 0) {
+                hasBooks = '<br />This author has some books: <br />',
+                bookList = Object.keys(res.data).map(function (key) {
+                    return res.data[key].title
+                }).join('<br/>');
+            }
+
+            modalOptions.bodyText += hasBooks + bookList;
+
+            modalService.showModal(modalOptions).then(function () {
+                authorService.deleteAuthor(authorId);
+            });
+          });
     };
 }
