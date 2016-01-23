@@ -19,6 +19,12 @@ function starRating() {
 function ratingController($scope) {
     const vm = this;
 
+    if(!vm.score) {
+      vm.score = 0;
+    }
+    if(!vm.max) {
+      vm.max = 5;
+    }
     vm.updateStars = function() {
       vm.stars = [ ];
       for (let idx = 0; idx < vm.max; idx++) {

@@ -6,12 +6,14 @@
     <p> {{vm.bookData.bought_on | date:'dd-MM-yyyy'}} </p>
   <h4>Category:</h4>
   <p>{{vm.bookData.category}} </p>
-  <h4>Description:</h4>
-  <p>{{vm.bookData.description}}</p>
   <h4>Language:</h4>
   <p>{{vm.bookData.language}}</p>
+  <h4>Format:</h4>
+  <p>{{vm.bookData.format}}</p>
   <h4>Rating:</h4>
   <star-rating score="vm.bookData.rating" max="5" readonly="true"></star-rating>
+  <h4>Description:</h4>
+  <p>{{vm.bookData.description}}</p>
 </div>
 <div ng-show="vm.editorEnabled">
 <div class="input-group">
