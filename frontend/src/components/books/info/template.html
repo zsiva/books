@@ -10,6 +10,8 @@
   <p>{{vm.bookData.description}}</p>
   <h4>Language:</h4>
   <p>{{vm.bookData.language}}</p>
+  <h4>Rating:</h4>
+  <star-rating score="vm.bookData.rating" max="5" readonly="true"></star-rating>
 </div>
 <div ng-show="vm.editorEnabled">
 <div class="input-group">
@@ -32,9 +34,9 @@
         <div class="input-group-addon"><i class="fa fa-language"></i></div>
         <input type="text" class="form-control" ng-model="vm.bookData.language" placeholder="Language">
     </div>
-    <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-star"></i></div>
-        <input type="number" class="form-control" ng-model="vm.bookData.rating" placeholder="Rating">
+    <div class="form-group">
+        <label>Rating:</label>
+        <star-rating score="vm.bookData.rating" ng-model="vm.bookData.rating" max="5"></star-rating>
     </div>
     <label>Author:</label>
     <select-authors-list ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id"></select-authors-list>

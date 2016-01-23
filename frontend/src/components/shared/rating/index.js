@@ -20,12 +20,17 @@ function ratingController($scope) {
     const vm = this;
 
     vm.updateStars = function() {
-      var idx = 0;
       vm.stars = [ ];
-      for (idx = 0; idx < vm.max; idx += 1) {
+      for (let idx = 0; idx < vm.max; idx++) {
         vm.stars.push({
           full: vm.score > idx
         });
+      }
+    };
+
+    vm.setRating = function(idx) {
+      if (!vm.readonly) {
+        vm.score = idx + 1;
       }
     };
 

@@ -1,5 +1,9 @@
 <div class="rating">
-  <a ng-repeat="star in vm.stars">
+  <a ng-repeat="star in vm.stars"
+    ng-click="vm.setRating($index)"
+    ng-class="(vm.hoverIdx >= 0 && !vm.readonly) ? 'rating-active' : 'rating-normal'"
+    ng-mouseover="vm.hoverIdx = $index + 1"
+    ng-mouseleave="vm.hoverIdx = -1">
     <i class="fa" ng-class="star.full ? 'fa-star' : 'fa-star-o'"></i>
   </a>
 </div>

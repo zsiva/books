@@ -8,11 +8,10 @@
 .rating > a {
   text-decoration: none;
 }
-
-.rating .rating-highlight, .rating.rating-highlight:hover {
-  color: #F4914E;
-}
-
 .rating .rating-normal, .rating.rating-normal:hover {
-  color: #3C3C3C;
+  color: #000;
+}
+.rating .rating-active, .rating.rating-active:hover {
+  color: #428bca;
+  cursor: pointer;
 }

@@ -19,7 +19,8 @@ const app = angular.module('books', [
     require('./components/authors/edit').name,
     require('./components/authors/info').name,
     require('./services/author-service').name,
-    require('./services/modal-service').name
+    require('./services/modal-service').name,
+    require('./components/shared/rating').name
 
 ]);
 app.config(setUpRoutes);
