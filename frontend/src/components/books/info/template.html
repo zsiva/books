@@ -2,24 +2,24 @@
 <div ng-hide="vm.editorEnabled">
     <h4>Author</h4>
     <p>{{vm.bookData.author_id.name}}</p>
-  <h4>Bought:</h4>
+    <h4>Bought:</h4>
     <p> {{vm.bookData.bought_on | date:'dd-MM-yyyy'}} </p>
-  <h4>Category:</h4>
-  <p>{{vm.bookData.category}} </p>
-  <h4>Language:</h4>
-  <p>{{vm.bookData.language}}</p>
-  <h4>Format:</h4>
-  <p>{{vm.bookData.format}}</p>
-  <h4>Rating:</h4>
-  <star-rating score="vm.bookData.rating" max="5" readonly="true"></star-rating>
-  <h4>Description:</h4>
-  <p>{{vm.bookData.description}}</p>
+    <h4>Category:</h4>
+    <p>{{vm.bookData.category}} </p>
+    <h4>Language:</h4>
+    <p>{{vm.bookData.language}}</p>
+    <h4>Format:</h4>
+    <p>{{vm.bookData.format}}</p>
+    <h4>Rating:</h4>
+    <star-rating score="vm.bookData.rating" max="5" readonly="true"></star-rating>
+    <h4>Description:</h4>
+    <p>{{vm.bookData.description}}</p>
 </div>
 <div ng-show="vm.editorEnabled">
-<div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-book"></i></div>
-          <input type="text" class="form-control" ng-model="vm.bookData.title" placeholder="Book name">
-      </div>
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-book"></i></div>
+        <input type="text" class="form-control" ng-model="vm.bookData.title" placeholder="Book name">
+    </div>
     <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
         <input type="text" class="form-control" ng-model="vm.bookData.bought_on" placeholder="Bought date">
@@ -44,10 +44,9 @@
     <select-authors-list ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id"></select-authors-list>
 
     <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea ng-model="vm.bookData.description" class="form-control" rows="3" id="description"></textarea>
+        <label for="description">Description:</label>
+        <textarea ng-model="vm.bookData.description" class="form-control" rows="3" id="description"></textarea>
     </div>
-  </div>
 </div>
 <div class="pull-left">
     <button class="btn btn btn-warning fa fa-chevron-left" ui-sref="books-list">&nbsp;Back</button>

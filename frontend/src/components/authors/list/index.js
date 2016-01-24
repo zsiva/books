@@ -1,5 +1,5 @@
 module.exports = angular.module('books.list.authorsListController', [
-        require('components/authors/authorCreate').name
+        require('components/authors/create').name
     ])
     .controller('authorListController', authorListController);
 
