@@ -76,4 +76,9 @@ router.delete('/api/deleteauthor/:author_id', function(req, res) {
     });
 });
 
+router.put('/api/updateauthor/:author_id', function(req, res) {
+  Author.findOneAndUpdate({_id: req.params.author_id}, req.body, function () {
+        res.send(req.body);
+    });
+});
 module.exports = router;
