@@ -1,5 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    slug = require('mongoose-slug'),
+    Schema = mongoose.Schema;
 
 var Book = new Schema({
     book_id: String,
@@ -14,11 +15,15 @@ var Book = new Schema({
     language: String
 });
 
+Book.plugin(slug('title'));
+
 var Author = Schema({
-  name    : String,
-  slug: String,
-  books : [{ type: Schema.Types.ObjectId, ref: 'Book' }]
+    name: String,
+    slug: String,
+    books: [{ type: Schema.Types.ObjectId, ref: 'Book' }]
 });
+
+Author.plugin(slug('name'));
 
 mongoose.model('Book', Book);
 mongoose.model('Author', Author);
