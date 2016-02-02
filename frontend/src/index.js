@@ -56,15 +56,15 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             },
             resolve: {
                 bookData: function ($http, $stateParams) {
-                    return $http.get('/api/books/' + $stateParams.bookId).then( function (res) {
-                      return res.data[0];
+                    return $http.get('/api/books/' + $stateParams.bookSlug).then( function (res) {
+                        return res.data[0];
                     });
                 }
             }
         })
         .state(STATES.BOOK_CREATE, {
             url: ROUTES.BOOK_CREATE,
-            template: require('./components/books/bookCreate/template.html'),
+            template: require('./components/books/create/template.html'),
             controller: 'bookCreateController',
             controllerAs: 'vm'
         })

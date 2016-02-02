@@ -5,10 +5,10 @@ var mongoose = require('mongoose');
 var Book = mongoose.model('Book');
 var Author = mongoose.model('Author');
 
-router.get('/api/books/:book_id?', function (req, res) {
+router.get('/api/books/:book_slug?', function (req, res) {
     var searchQuery = {};
-    if (req.params.book_id) {
-      searchQuery = {_id: req.params.book_id};
+    if (req.params.book_slug) {
+      searchQuery = {slug: req.params.book_slug};
     }
     Book
     .find(searchQuery)
