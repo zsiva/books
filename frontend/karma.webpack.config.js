@@ -15,15 +15,15 @@ module.exports = function (config) {
         'src/services/modal-service.js': ['webpack', 'sourcemap'],
         'tests/services/modal-service.spec.js': ['webpack', 'sourcemap']
     },
-    reporters: [ 'dots' ], //report results in this format
-    webpack: { //kind of a copy of your webpack config
-      devtool: 'inline-source-map', //just do inline source maps instead of the default
+    reporters: [ 'dots' ],
+    webpack: {
+      devtool: 'inline-source-map',
       module: {
           loaders: [
               {
                   test: /\.js?$/,
                   exclude: /(node_modules|bower_components)/,
-                  loader: 'babel?presets[]=es2015' // 'babel-loader' is also a legal name to reference
+                  loader: 'babel?presets[]=es2015'
               },
               {
                   test: /\.html$/,
@@ -33,7 +33,7 @@ module.exports = function (config) {
       }
     },
     webpackServer: {
-      noInfo: true //please don't spam the console when running in karma!
+      noInfo: true
     }
   });
 };
