@@ -1,12 +1,10 @@
-import _ from 'lodash';
+//import _ from 'lodash';
 module.exports = angular.module('books.modalService', [])
     .service('modalService', modalService)
     .filter("sanitize", sanitize);
 
 function sanitize ($sce) {
-    return function(htmlCode){
-        return $sce.trustAsHtml(htmlCode);
-    }
+    return (htmlCode) => $sce.trustAsHtml(htmlCode)
 }
 
 function modalService($uibModal) {
@@ -26,23 +24,22 @@ function modalService($uibModal) {
         bodyText: 'Perform this action?'
     };
 
-    this.showModal = function (customModalOptions) {
-        customModalOptions = customModalOptions || {};
+    this.showModal =  (customModalOptions = {}) => {
         angular.extend(modalOptions, customModalOptions);
 
-        let modalConfig = _.clone(modalDefaults);
+        let modalConfig = Object.assign(modalDefaults);
         if (customModalOptions.bodyText) {
             modalConfig.template = modalConfig.template.replace('@body@', customModalOptions.bodyText)
         }
 
-        modalConfig.controller = function ($scope, $uibModalInstance) {
+        modalConfig.controller = ($scope, $uibModalInstance) => {
             $scope.modalOptions = modalOptions;
 
-            $scope.modalOptions.ok = function () {
+            $scope.modalOptions.ok = () => {
                 $uibModalInstance.close($scope);
             };
 
-            $scope.modalOptions.closeModal = function () {
+            $scope.modalOptions.closeModal = () => {
                 $uibModalInstance.dismiss('cancel');
             };
         };

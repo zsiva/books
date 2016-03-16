@@ -1,24 +1,20 @@
 module.exports = angular.module('books.bookService', []).service('bookService', bookService);
 
 function bookService($http) {
-    var books = [];
+    let books = [];
 
-    this.initBooks = function (newbooks) {
-        books = newbooks;
-    };
+    this.initBooks = (newbooks) => books = newbooks;
 
-    this.getBooksList = function () {
-        return books;
-    };
+    this.getBooksList = () => books;
 
     //TODO: validate fields
-    this.addBook = function (newBook) {
+    this.addBook = (newBook) => {
         $http.post('/api/createbook/', newBook).success(function(book) {
             books.push(book);
         });
     };
 
-    this.updateBook = function (newBook) {
+    this.updateBook = (newBook) => {
         $http.put('/api/updatebook/' + newBook._id, newBook)
           .then(res => {
             const updatedBook = res.data;
@@ -27,16 +23,14 @@ function bookService($http) {
           });
     };
 
-    this.deleteBook = function (bookId) {
+    this.deleteBook = (bookId) => {
         $http.delete('/api/deletebook/' + bookId)
             .success(function() {
-                var pos = books.map(function(book) { return book._id; })
-                    .indexOf(bookId);
+                let pos = books.map((book) => book._id).indexOf(bookId);
                 books.splice(pos, 1);
             })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
+            .error( (data) => console.log('Error: ' + data));
+
     }
 
 }

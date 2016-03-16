@@ -1,23 +1,19 @@
 module.exports = angular.module('books.authorService', []).service('authorService', authorService);
 
 function authorService($http) {
-    var authors = [];
+    let authors = [];
 
-    this.initAuthors = function (newAuthors) {
-        authors = newAuthors;
-    };
+    this.initAuthors = (newAuthors) => authors = newAuthors;
 
-    this.getAuthorsList = function () {
-        return authors;
-    };
+    this.getAuthorsList = () => authors;
 
-    this.addAuthor = function (newAuthor) {
+    this.addAuthor = (newAuthor) => {
         $http.post('/api/createauthor/', newAuthor).success(function (author) {
             authors.push(author);
         });
     };
 
-    this.updateAuthor = function (newAuthor) {
+    this.updateAuthor = (newAuthor) => {
         $http.put('/api/updateauthor/' + newAuthor._id, newAuthor)
             .then(res => {
                 const updatedAuthor = res.data;
@@ -26,17 +22,12 @@ function authorService($http) {
               });
     };
 
-    this.deleteAuthor = function (authorId) {
+    this.deleteAuthor = (authorId) => {
         $http.delete('/api/deleteauthor/' + authorId)
-            .success(function () {
-                var pos = authors.map(function (author) {
-                        return author._id;
-                    })
-                    .indexOf(authorId);
+            .success(() => {
+                let pos = authors.map((author) => author._id).indexOf(authorId);
                 authors.splice(pos, 1);
             })
-            .error(function (data) {
-                console.log('Error: ' + data);
-            });
+            .error( (data) => console.log('Error: ' + data));
     };
 }
