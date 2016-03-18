@@ -1,13 +1,15 @@
-import { ItemService } from '../../../services/item-service';
+//import { ItemService } from '../../../services/item.service';
 //import { newBookService } from '../../../services/new-book-service';
 
 class BookListController {
-    constructor(itemFactory, modalService) {
-        this.itemService = itemFactory;
+    constructor(modalService, BookService) {
+        this.bookService = BookService;
         this.modalService = modalService;
         this.hidden = true;
         this.sortType = 'title';
         this.sortReverse = false;
+
+        this.bookService.getItems().then(result => this.booksList = result);
 
         this.modalOptions = {
             closeButtonText: 'Cancel',
@@ -17,14 +19,11 @@ class BookListController {
             displayAction: true,
             actionClass: 'btn-danger fa fa-trash'
         };
-
-        this.itemService.setCollection('book');
-        this.itemService.getItems('authorbooks').then(result => this.booksList = result);
     }
 
     deleteBook(id) {
         this.modalService.showModal(this.modalOptions).then((modalScope) => {
-            this.itemService.deleteItem(id).then((bookId) => {
+            this.bookService.deleteItem(id).then((bookId) => {
                 let pos = this.booksList.findIndex(book => book._id === id)
                 this.booksList.splice(pos, 1);
             });
