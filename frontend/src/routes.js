@@ -2,8 +2,10 @@ import ROUTES from './constants/routes';
 import STATES from './constants/states';
 
 /*@ngInject*/
-function routes ($stateProvider, $locationProvider) {
+function routes ($stateProvider, $locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise(ROUTES.BOOKS);
+    
     $stateProvider
         .state(STATES.BOOKS_LIST, {
             url: ROUTES.BOOKS,
@@ -68,22 +70,6 @@ function routes ($stateProvider, $locationProvider) {
                     });
                 }
             }
-        })
-        .state('ideas', {
-            url: '/ideas',
-            template: '<span>Test</span>',
-            controller: 'IdeaController',
-            controllerAs: 'ideaCtrl',
-            resolve: {
-                ideas(Idea) {
-                    console.log('testing service');
-                    return Idea.all();
-                }
-            }
-        })
-        .state('index', {
-            url: '/',
-            template: 'Hello'
         });
 }
 export default angular.module('app.routes', [])
