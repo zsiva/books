@@ -10,15 +10,18 @@ const app = angular.module('books', [
     'ui.router',
     'ui.bootstrap',
     'slugifier',
+    'books.itemService',
     require('./services/book-service').name,
     require('./components/books/list').name,
     require('./components/books/info').name,
+    require('./components/books/create').name,
     require('./components/authors/list').name,
     require('./components/navigation').name,
     require('./components/authors/authorsSelect').name,
     require('./components/authors/info').name,
     require('./services/author-service').name,
     require('./services/modal-service').name,
+    require('./services/book-service').name,
     require('./components/shared/rating').name
 
 ]);
@@ -31,19 +34,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             url: ROUTES.BOOKS,
             template: require('./components/books/list/template.html'),
             controller: 'bookListController',
-            controllerAs: 'vm',
-            resolve: {
-                books: function ($http, bookService) {
-                    return $http.get('/api/authorbooks').then( function (res) {
-                        bookService.initBooks(res.data);
-                    });
-                },
-                authors: function ($http, authorService) {
-                    return $http.get('/api/authors').then( function (res) {
-                        authorService.initAuthors(res.data);
-                    });
-                }
-            }
+            controllerAs: 'vm'
         })
         .state(STATES.BOOK_INFO, {
             url: ROUTES.BOOK_INFO,
@@ -58,6 +49,11 @@ function setUpRoutes ($stateProvider, $locationProvider) {
                 bookData: function ($http, $stateParams) {
                     return $http.get('/api/books/' + $stateParams.bookSlug).then( function (res) {
                         return res.data[0];
+                    });
+                },
+                authors: function ($http, authorService) {
+                    return $http.get('/api/authors').then( function (res) {
+                        authorService.initAuthors(res.data);
                     });
                 }
             }
@@ -92,7 +88,7 @@ function setUpRoutes ($stateProvider, $locationProvider) {
             controllerAs: 'vm',
             resolve: {
                 authorData: function ($http, $stateParams) {
-                    return $http.get('/api/authorbooks/' + $stateParams.authorId).then( function (res) {
+                    return $http.get('/api/authors/' + $stateParams.authorId).then( function (res) {
                       return res.data;
                     });
                 }
