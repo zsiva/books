@@ -8,23 +8,31 @@ class ItemService
     HTTP.set(this, $http);
   }
 
-  getItems(items){
-    return HTTP.get(this).get('api/' + items).then(result => result.data );
+  setCollection(collection) {
+      this.collection = collection;
+  }
+  getItems(){
+    return HTTP.get(this).get(`/api/${this.collection}s/`).then(result => result.data );
   }
 
   addItem(api_route, newItem){
       return HTTP.get(this).post(api_route, newItem);
   }
 
-  deleteItem (api_route) {
-      HTTP.get(this).delete(api_route).then(item => item);
+  deleteItem (itemId) {
+      return HTTP.get(this).delete(`/api/delete${this.collection}/${itemId}`).then(item => item);
   }
 
+  createItem(item) {
+      return HTTP.get(this).post(`/api/create${this.collection}`, item);
+  };
+  
   checkIfItemExists(api_route, title){
     return HTTP.get(this).get(`/api/itemExists/${title}`).then(result =>  result.data );
   }
-  static itemFactory($http){
-      return new ItemService($http);
+
+  static itemFactory(collection, $http){
+      return new ItemService(collection, $http);
   }
 }
 
