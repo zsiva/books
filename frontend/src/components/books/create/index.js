@@ -1,12 +1,14 @@
 module.exports = angular.module('books.bookCreateController', [])
     .controller('bookCreateController', bookCreateController);
 
-function bookCreateController(bookService) {
+function bookCreateController(itemFactory) {
   const vm = this;
+  vm.itemService = itemFactory;
   setupNewBook();
 
   vm.addBook = function () {
-      bookService.addBook(vm.newBook);
+      vm.itemService.setCollection('book');
+      vm.itemService.createItem(vm.newBook);
       setupNewBook();
   };
 
