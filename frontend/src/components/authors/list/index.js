@@ -1,43 +1,44 @@
-module.exports = angular.module('books.list.authorsListController', [
-        require('components/authors/create').name
-    ])
-    .controller('authorListController', authorListController);
+class authorListController {
+    constructor(modalService, AuthorService) {
+        this.authorService = AuthorService;
+        this.modalService = modalService;
+        this.hidden = true;
+        this.sortType = 'name';
 
-function authorListController(authorService, $http, modalService) {
-    const vm = this;
+        this.authorService.getItems().then(result => this.authorsList = result);
 
-    vm.hidden = true;
-    vm.sortType     = 'name';
-    vm.sortReverse  = false;
-
-    vm.authorsList = authorService.getAuthorsList();
-
-    vm.deleteAuthor = function (authorId) {
-        var modalOptions = {
-            closeButtonText: ' Cancel',
+        this.modalOptions = {
+            closeButtonText: 'Cancel',
             actionButtonText: ' Delete',
-            headerText: 'Delete author',
+            headerText: 'Delete book',
             bodyText: 'Are you sure you want to delete it?',
             displayAction: true,
             actionClass: 'btn-danger fa fa-trash'
         };
+    }
 
-        $http.get('/api/authorbooks/' + authorId).then(function (res) {
-            var authorName = '',
-                hasBooks = '<br />This author has currently no books',
-                bookList = '';
+    deleteAuthor(authorId) {
+        this.authorService.getAuthorBooks(authorId).then((res) => {
+            var authorName = '';
+
             if (res.data.length > 0) {
-                hasBooks = '<br />This author has some books: <br />',
-                bookList = Object.keys(res.data).map(function (key) {
-                    return res.data[key].title
-                }).join('<br/>');
+                authorName = res.data[0].author_id.name;
             }
 
-            modalOptions.bodyText += hasBooks + bookList;
+            this.modalOptions.bodyText += `${authorName} has ${res.data.length} books`;
 
-            modalService.showModal(modalOptions).then(function () {
-                authorService.deleteAuthor(authorId);
+            this.modalService.showModal(this.modalOptions).then((modalScope) => {
+                this.authorService.deleteItem(authorId).then(() => {
+                    let pos = this.authorsList.findIndex(author => author._id === authorId)
+                    this.authorsList.splice(pos, 1);
+                });
+
             });
-          });
+        });
     };
 }
+
+module.exports = angular.module('books.list.authorsListController', [
+    require('components/authors/create').name
+])
+.controller('authorListController', authorListController);
