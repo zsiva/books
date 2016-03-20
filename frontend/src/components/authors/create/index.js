@@ -1,32 +1,39 @@
-module.exports = angular.module('books.authorCreate', [
-    require('services/author-service').name
-]).directive('authorCreate', authorCreate);
+/**
+* @desc directive that creates an input and button to add new authors
+* @example <author-create></author-create>
+*/
 
-function authorCreate() {
-    return {
-        restrict: 'E',
-        bindToController: true,
-        controllerAs: 'vm',
-        scope: {},
-        template: require('./template.html'),
-        controller: authorCreateController
-    };
+class AuthorCreate {
+    constructor() {
+        this.template = require('./template.html');
+        this.restrict = 'EA';
+        this.controllerAs = 'vm';
+        this.bindToController = true;
+        this.authorsList = [];
+        this.controller = AuthorCreateController;
+        this.scope = {}
+    }
 }
 
-function authorCreateController(authorService) {
-    const vm = this;
+class AuthorCreateController {
+    constructor (AuthorService) {
+        this.newAuthor = {};
+        this.AuthorService = AuthorService;
+        this.setupNewAuthor();
+    }
 
-    setupNewAuthor();
-
-    vm.addAuthor = function () {
-        authorService.addAuthor(vm.newAuthor);
-        setupNewAuthor();
+    addAuthor (){
+        this.AuthorService.createItem(this.newAuthor);
+        this.setupNewAuthor();
     };
 
-    function setupNewAuthor() {
-        vm.newAuthor = {
+    setupNewAuthor() {
+        this.newAuthor = {
             title: '',
             books: []
         };
     }
 }
+
+module.exports = angular.module('books.authorCreate', [])
+    .directive('authorCreate', () => new AuthorCreate);

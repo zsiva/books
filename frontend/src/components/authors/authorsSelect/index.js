@@ -20,7 +20,6 @@ class SelectAuthorsList {
 class SelectAuthorsListController {
     constructor (AuthorService) {
         Promise.resolve(AuthorService.getAllItems()).then((data) => {
-            console.log(data);
             this.authorsList = data;
         });
     }
