@@ -7,12 +7,12 @@ class ItemService {
     this.collection = "";
   }
 
-  getItems(){
+  getAllItems(){
     return HTTP.get(this).get(`/api/${this.collection}s/`).then(result => result.data );
   }
 
-  addItem(api_route, newItem){
-      return HTTP.get(this).post(api_route, newItem);
+  getItem(slug){
+    return HTTP.get(this).get(`/api/${this.collection}s/${slug}`).then(result =>  result.data[0]);
   }
 
   deleteItem (itemId) {
@@ -21,10 +21,14 @@ class ItemService {
 
   createItem(item) {
       return HTTP.get(this).post(`/api/create${this.collection}`, item);
-  };
+  }
 
   checkIfItemExists(api_route, title){
     return HTTP.get(this).get(`/api/itemExists/${title}`).then(result =>  result.data );
+  }
+
+  updateItem(newAuthor) {
+      return HTTP.get(this).put(`/api/update${this.collection}/${newAuthor._id}`, newAuthor).then(result =>  result.data );
   }
 }
 
