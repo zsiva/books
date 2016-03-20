@@ -1,11 +1,10 @@
 class authorListController {
-    constructor(modalService, AuthorService) {
+    constructor(authors, modalService, AuthorService) {
         this.authorService = AuthorService;
         this.modalService = modalService;
         this.hidden = true;
         this.sortType = 'name';
-
-        this.authorService.getItems().then(result => this.authorsList = result);
+        this.authorsList = authors;
 
         this.modalOptions = {
             closeButtonText: 'Cancel',

@@ -4,7 +4,7 @@ import STATES from '../../../constants/states';
 module.exports = angular.module('books.authorInfoController', [])
     .controller('authorInfoController', authorInfoController);
 
-function authorInfoController(authorData, authorService, $state) {
+function authorInfoController(authorData, $state) {
     const vm = this;
 
     if(authorData.length > 0) {

@@ -1,7 +1,6 @@
 class BookCreateController {
-    constructor(modalService, BookService) {
+    constructor(BookService) {
         this.bookService = BookService;
-        this.modalService = modalService;
         this.setupNewBook();
     }
 
