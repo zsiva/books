@@ -5,13 +5,16 @@ import STATES from './constants/states';
 function routes ($stateProvider, $locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise(ROUTES.BOOKS);
-    
+
     $stateProvider
         .state(STATES.BOOKS_LIST, {
             url: ROUTES.BOOKS,
             template: require('./components/books/list/template.html'),
             controller: 'bookListController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                booksData: ['BookService', BookService => BookService.getAllItems()]
+            }
         })
         .state(STATES.BOOK_INFO, {
             url: ROUTES.BOOK_INFO,
@@ -19,27 +22,20 @@ function routes ($stateProvider, $locationProvider, $urlRouterProvider) {
             controller: 'bookInfoController',
             controllerAs: 'vm',
             params: {
-              bookSlug: '',
-              bookId: ''
-            },
+              bookSlug: ''
+           },
             resolve: {
-                bookData: function ($http, $stateParams) {
-                    return $http.get('/api/books/' + $stateParams.bookSlug).then( function (res) {
-                        return res.data[0];
-                    });
-                },
-                authors: function ($http, authorService) {
-                    return $http.get('/api/authors').then( function (res) {
-                        authorService.initAuthors(res.data);
-                    });
-                }
-            }
+                bookData: (BookService, $stateParams) =>  BookService.getItem($stateParams.bookSlug)
+            },
         })
         .state(STATES.BOOK_CREATE, {
             url: ROUTES.BOOK_CREATE,
             template: require('./components/books/create/template.html'),
             controller: 'bookCreateController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                authors: ['AuthorService', AuthorService => AuthorService.getAllItems()]
+            }
         })
         .state(STATES.AUTHORS_LIST, {
             url: ROUTES.AUTHORS,
@@ -47,11 +43,7 @@ function routes ($stateProvider, $locationProvider, $urlRouterProvider) {
             controller: 'authorListController',
             controllerAs: 'vm',
             resolve: {
-                authors: function ($http, authorService) {
-                    return $http.get('/api/authors').then( function (res) {
-                        authorService.initAuthors(res.data);
-                    });
-                }
+                authors: ['AuthorService', AuthorService => AuthorService.getAllItems()]
             }
         })
         .state(STATES.AUTHOR_INFO, {
