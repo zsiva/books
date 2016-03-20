@@ -1,12 +1,11 @@
 class BookListController {
-    constructor(modalService, BookService) {
+    constructor(booksData, modalService, BookService) {
         this.bookService = BookService;
         this.modalService = modalService;
         this.hidden = true;
         this.sortType = 'title';
         this.sortReverse = false;
-
-        this.bookService.getItems().then(result => this.booksList = result);
+        this.booksList = booksData;
 
         this.modalOptions = {
             closeButtonText: 'Cancel',

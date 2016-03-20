@@ -21,8 +21,6 @@ const app = angular.module('books', [
     require('./components/navigation').name,
     require('./components/authors/authorsSelect').name,
     require('./components/authors/info').name,
-    require('./services/author-service').name,
     require('./services/modal-service').name,
     require('./components/shared/rating').name
-
 ]);
