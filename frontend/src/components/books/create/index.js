@@ -1,26 +1,27 @@
-module.exports = angular.module('books.bookCreateController', [])
-    .controller('bookCreateController', bookCreateController);
+class BookCreateController {
+    constructor(modalService, BookService) {
+        this.bookService = BookService;
+        this.modalService = modalService;
+        this.setupNewBook();
+    }
 
-function bookCreateController(itemFactory) {
-  const vm = this;
-  vm.itemService = itemFactory;
-  setupNewBook();
+    addBook (){
+        this.bookService.createItem(this.newBook);
+        this.setupNewBook();
+    };
 
-  vm.addBook = function () {
-      vm.itemService.setCollection('book');
-      vm.itemService.createItem(vm.newBook);
-      setupNewBook();
-  };
-
-  function setupNewBook() {
-      vm.newBook = {
-          title: '',
-          author_id: '',
-          bought_on: '',
-          category: '',
-          description: '',
-          format: '',
-          rating: ''
-      };
-  }
+    setupNewBook() {
+        this.newBook = {
+            title: '',
+            author_id: '',
+            bought_on: '',
+            category: '',
+            description: '',
+            format: '',
+            rating: ''
+        };
+    }
 }
+
+module.exports = angular.module('books.bookCreateController', [])
+.controller('bookCreateController', BookCreateController);

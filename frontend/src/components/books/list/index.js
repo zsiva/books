@@ -1,6 +1,3 @@
-//import { ItemService } from '../../../services/item.service';
-//import { newBookService } from '../../../services/new-book-service';
-
 class BookListController {
     constructor(modalService, BookService) {
         this.bookService = BookService;
