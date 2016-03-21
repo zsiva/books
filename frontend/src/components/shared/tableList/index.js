@@ -1,5 +1,7 @@
 /**
 * @desc directive that creates a table
+*       Header -> keys
+*       Content -> values
 * @example <table-list data=""></table-list>
 */
 
