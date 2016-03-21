@@ -49,18 +49,13 @@ function routes ($stateProvider, $locationProvider, $urlRouterProvider) {
         .state(STATES.AUTHOR_INFO, {
             url: ROUTES.AUTHOR_INFO,
             params: {
-              authorSlug: '',
-              authorId: ''
+              authorSlug: ''
             },
             template: require('./components/authors/info/template.html'),
             controller: 'authorInfoController',
             controllerAs: 'vm',
             resolve: {
-                authorData: function ($http, $stateParams) {
-                    return $http.get('/api/authors/' + $stateParams.authorId).then( function (res) {
-                      return res.data;
-                    });
-                }
+                authorData: (AuthorService, $stateParams) =>  AuthorService.getItem($stateParams.authorSlug)
             }
         });
 }

@@ -1,21 +1,21 @@
-import _ from 'lodash';
 import STATES from '../../../constants/states';
 
-module.exports = angular.module('books.authorInfoController', [])
-    .controller('authorInfoController', authorInfoController);
+class AuthorInfoController {
+    constructor(authorData, $state, AuthorService) {
+        this.authorService = AuthorService;
+        this.editorEnabled = false;
+        this.authorData = authorData;
 
-function authorInfoController(authorData, $state) {
-    const vm = this;
-
-    if(authorData.length > 0) {
-      vm.author = authorData[0].author_id;
-      vm.authorName = _.clone(authorData[0].author_id.name);
-    }
-    vm.booksList = authorData;
-
-    vm.saveAuthor = function () {
-      authorService.updateAuthor(vm.author);
-      $state.go(STATES.AUTHORS_LIST);
+        this.author = authorData.author_id;
+        this.authorName = authorData.name;
+        this.booksList = authorData.books;
     }
 
+    saveAuthor (){
+        this.bookService.updateItem(this.authorData);
+        $state.go(STATES.AUTHORS_LIST);
+    };
 }
+
+module.exports = angular.module('books.authorInfoController', [])
+    .controller('authorInfoController', AuthorInfoController);

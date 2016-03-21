@@ -52,10 +52,10 @@ router.delete('/api/deletebook/:book_id', function(req, res) {
     });
 });
 
-router.get('/api/authors/:author_id?', function (req, res) {
+router.get('/api/authors/:author_slug?', function (req, res) {
       var searchQuery = {};
-      if (req.params.author_id) {
-        searchQuery = {_id: req.params.author_id};
+      if (req.params.author_slug) {
+        searchQuery = {slug: req.params.author_slug};
       }
       Author.find(searchQuery, function (err, authors) {
           if (err) throw err;
