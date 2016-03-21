@@ -23,7 +23,7 @@
             <td>
                 <button class="btn btn-primary fa fa-eye" ui-sref="author-info({ authorId: author._id, authorSlug: author.slug })">&nbsp;Show
                 </button>
-                <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteAuthor(author._id)">&nbsp;Delete</button>
+                <delete-item-button itemid="author._id" itemtype="'author'"></delete-item-button>
             </td>
         </tr>
     </table>

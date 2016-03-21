@@ -38,7 +38,7 @@
             <td class="hidden-xs">{{book.category}}</td>
             <td>
                 <button class="btn btn-primary fa fa-eye" ui-sref="book-info({ bookId: book._id, bookSlug: book.slug })">&nbsp;Show</button>
-                <button class="btn btn-danger fa fa-trash" ng-click="vm.deleteBook(book._id)">&nbsp;Delete</button>
+                <delete-item-button itemid="book._id" itemtype="'book'"></delete-item-button>
             </td>
         </tr>
     </table>
