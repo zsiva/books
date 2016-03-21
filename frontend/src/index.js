@@ -7,6 +7,7 @@ import angular from 'angular';
 
 import services from './services/services';
 import routes from './routes';
+import directives from './components/directives';
 
 const app = angular.module('books', [
     'ui.router',
@@ -14,6 +15,7 @@ const app = angular.module('books', [
     'slugifier',
     services.name,
     routes.name,
+    directives.name,
     require('./components/books/list').name,
     require('./components/books/info').name,
     require('./components/books/create').name,

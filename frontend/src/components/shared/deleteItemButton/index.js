@@ -1,6 +1,7 @@
 /**
 * @desc directive that creates a table
 * @example <delete-item-button itemid="" itemtype=""></delete-item-button>
+* @TODO check if it has data from other collections
 */
 
 class DeleteItemButton {
@@ -25,7 +26,7 @@ class DeleteItemButtonController {
         this.modalOptions = {
             closeButtonText: 'Cancel',
             actionButtonText: ' Delete',
-            headerText: `Delete ${this.itemtype}`,
+            headerText: `Delete ${this.itemtype}?`,
             bodyText: 'Are you sure you want to delete it?',
             displayAction: true,
             actionClass: 'btn-danger fa fa-trash'
@@ -44,6 +45,3 @@ class DeleteItemButtonController {
 }
 
 export default DeleteItemButton;
-
-// module.exports = angular.module('books.deleteItemButton', [])
-//      .directive('deleteItemButton', () => new DeleteItemButton);
