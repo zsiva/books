@@ -21,8 +21,7 @@
         <tr ng-repeat="author in vm.authorsList | filter:search:strict | orderBy:vm.sortType:vm.sortReverse" ng-class-odd="'bg-info'">
             <td>{{author.name}}</td>
             <td>
-                <button class="btn btn-primary fa fa-eye" ui-sref="author-info({ authorId: author._id, authorSlug: author.slug })">&nbsp;Show
-                </button>
+                <info-item-button state="'author-info'" stateparams="{ authorId: author._id, authorSlug: author.slug }"></info-item-button>
                 <delete-item-button itemid="author._id" itemtype="'author'"></delete-item-button>
             </td>
         </tr>

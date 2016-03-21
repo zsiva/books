@@ -37,7 +37,7 @@
             <td class="hidden-xs">{{book.author_id.name}}</td>
             <td class="hidden-xs">{{book.category}}</td>
             <td>
-                <button class="btn btn-primary fa fa-eye" ui-sref="book-info({ bookId: book._id, bookSlug: book.slug })">&nbsp;Show</button>
+                <info-item-button state="'book-info'" stateparams="{ bookId: book._id, bookSlug: book.slug }"></info-item-button>
                 <delete-item-button itemid="book._id" itemtype="'book'"></delete-item-button>
             </td>
         </tr>

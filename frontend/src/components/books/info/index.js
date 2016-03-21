@@ -5,11 +5,12 @@ class BookInfoController {
         this.bookService = BookService;
         this.editorEnabled = false;
         this.bookData = bookData;
+        this.$state = $state;
     }
 
     saveBook (){
         this.bookService.updateItem(this.bookData);
-        $state.go(STATES.BOOKS_LIST);
+        this.$state.go(STATES.BOOKS_LIST);
     };
 }
 module.exports = angular.module('books.bookInfoController', [])
