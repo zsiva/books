@@ -19,7 +19,6 @@ const app = angular.module('books', [
     require('./components/books/info').name,
     require('./components/books/create').name,
     require('./components/authors/list').name,
-    require('./components/navigation').name,
     require('./components/authors/authorsSelect').name,
     require('./components/authors/info').name,
     require('./services/modal-service').name
