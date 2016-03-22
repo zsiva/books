@@ -20,7 +20,7 @@ Book.plugin(slug('title'));
 var Author = Schema({
     name: String,
     slug: String,
-    books: [{ type: Schema.Types.ObjectId, ref: 'Book' }]
+    books_id: [{ type: Schema.Types.ObjectId, ref: 'Book' }]
 });
 
 Author.plugin(slug('name'));
