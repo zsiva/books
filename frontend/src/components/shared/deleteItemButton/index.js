@@ -11,18 +11,19 @@ class DeleteItemButton {
             </button>`;
         this.restrict = 'EA';
         this.controllerAs = 'vm';
-        this.bindToController = true;
-        this.controller = DeleteItemButtonController;
-        this.scope = {
+        this.bindToController = {
             itemid: '=',
             itemtype: '='
-        }
+        };
+        this.controller = DeleteItemButtonController;
+        this.scope = {}
     }
 }
 
 class DeleteItemButtonController {
-    constructor (modalService) {
+    constructor (modalService, ItemService) {
         this.modalService = modalService;
+        this.itemService = ItemService;
         this.modalOptions = {
             closeButtonText: 'Cancel',
             actionButtonText: ' Delete',
@@ -34,11 +35,10 @@ class DeleteItemButtonController {
     }
 
     deleteItem () {
+        this.itemService.setCollection(this.itemtype);
         this.modalService.showModal(this.modalOptions).then((modalScope) => {
-            this.bookService.deleteItem(this.itemid).then((bookId) => {
-                let pos = this.booksList.findIndex(book => book._id === id)
-                this.booksList.splice(pos, 1);
-            });
+            //@TODO remove item from list
+            this.itemService.deleteItem(this.itemid);
 
         });
     }

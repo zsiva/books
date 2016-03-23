@@ -40,8 +40,10 @@
         <label>Rating:</label>
         <star-rating score="vm.bookData.rating" ng-model="vm.bookData.rating" max="5"></star-rating>
     </div>
-    <label>Author:</label>
-    <select-collection-items collection="'author'" ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id._id"></select-collection-items>
+    <div class="form-group">
+        <label>Author:</label>
+        <select-collection-items collection="'author'" ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id._id"></select-collection-items>
+    </div>
     <div class="form-group">
         <label for="description">Description:</label>
         <textarea ng-model="vm.bookData.description" class="form-control" rows="3" id="description"></textarea>
