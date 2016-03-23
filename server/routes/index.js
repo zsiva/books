@@ -19,20 +19,6 @@ router.get('/api/books/:book_slug?', (req, res) => {
     });
 });
 
-router.get('/api/authorbooks/:author_id?', (req, res) => {
-    var searchQuery = {};
-    if (req.params.author_id) {
-      searchQuery = {author_id: req.params.author_id};
-    }
-    Book
-    .find(searchQuery)
-    .populate('author_id', 'name')
-    .exec(function (err, books) {
-      if (err) throw err;
-      res.status(200).json(books);
-    });
-});
-
 router.post('/api/createbook', (req, res) => {
     var book = new Book(req.body);
     book.save();
@@ -78,6 +64,7 @@ router.delete('/api/deleteauthor/:author_id', (req, res) => {
 });
 
 router.put('/api/updateauthor/:author_id', (req, res) => {
+    console.log(req.body);
   Author.findOneAndUpdate({_id: req.params.author_id}, req.body, () => res.send(req.body));
 });
 

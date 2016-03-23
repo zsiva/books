@@ -11,10 +11,6 @@ class AuthorService extends ItemService {
         this.collection = "author";
         this.authors = [];
     }
-    
-    getAuthorBooks(authorId) {
-        return HTTP.get(this).get(`/api/authorbooks/${authorId}`);
-    }
 }
 
 export default AuthorService;
