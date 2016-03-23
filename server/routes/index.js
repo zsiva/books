@@ -43,7 +43,7 @@ router.get('/api/authors/:author_slug?', (req, res) => {
       }
 
      Author.find(searchQuery)
-         .populate('books_id', 'title category')
+         .populate('books_id', 'name category')
          .exec( (err, authors) => {
            if (err) throw err;
            res.status(200).json(authors);
@@ -64,7 +64,6 @@ router.delete('/api/deleteauthor/:author_id', (req, res) => {
 });
 
 router.put('/api/updateauthor/:author_id', (req, res) => {
-    console.log(req.body);
   Author.findOneAndUpdate({_id: req.params.author_id}, req.body, () => res.send(req.body));
 });
 

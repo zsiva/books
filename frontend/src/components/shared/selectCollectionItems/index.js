@@ -19,7 +19,6 @@ class SelectCollectionItems {
 
 class CollectionSelectController {
     constructor (ItemService) {
-        console.log(this);
         ItemService.setCollection(this.collection);
         Promise.resolve(ItemService.getAllItems()).then((data) => {
             this.itemsList = data;

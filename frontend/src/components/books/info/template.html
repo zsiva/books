@@ -1,4 +1,4 @@
-<h3 class="bg-info main-title">{{vm.bookData.title}}</h3>
+<h3 class="bg-info main-title">{{vm.bookData.name}}</h3>
 <div ng-hide="vm.editorEnabled">
     <h4>Author</h4>
     <p>{{vm.bookData.author_id.name}}</p>
@@ -18,7 +18,7 @@
 <div ng-show="vm.editorEnabled">
     <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-book"></i></div>
-        <input type="text" class="form-control" ng-model="vm.bookData.title" placeholder="Book name">
+        <input type="text" class="form-control" ng-model="vm.bookData.name" placeholder="Book name">
     </div>
     <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
@@ -41,8 +41,7 @@
         <star-rating score="vm.bookData.rating" ng-model="vm.bookData.rating" max="5"></star-rating>
     </div>
     <label>Author:</label>
-    <select-authors-list ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id"></select-authors-list>
-
+    <select-collection-items collection="'author'" ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id._id"></select-collection-items>
     <div class="form-group">
         <label for="description">Description:</label>
         <textarea ng-model="vm.bookData.description" class="form-control" rows="3" id="description"></textarea>
