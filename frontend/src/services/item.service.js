@@ -7,6 +7,9 @@ class ItemService {
     this.collection = "";
   }
 
+  setCollection(newCollection) {
+      this.collection = newCollection;
+  }
   getAllItems(){
     return HTTP.get(this).get(`/api/${this.collection}s/`).then(result => result.data );
   }
