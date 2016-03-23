@@ -8,21 +8,19 @@ class SelectCollectionItems {
         this.template = require('./template.html');
         this.restrict = 'EA';
         this.controllerAs = 'vm';
-        this.bindToController = true;
-        this.controller = CollectionSelectController;
-        this.scope = {
+        this.bindToController = {
             selectModel: '=',
             collection: '='
-        }
+        };
+        this.controller = CollectionSelectController;
+        this.scope = {}
     }
 }
 
 class CollectionSelectController {
     constructor (ItemService) {
         ItemService.setCollection(this.collection);
-        Promise.resolve(ItemService.getAllItems()).then((data) => {
-            this.itemsList = data;
-        });
+        Promise.resolve(ItemService.getAllItems()).then((data) => this.itemsList = data);
     }
 }
 
