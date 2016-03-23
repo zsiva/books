@@ -23,8 +23,7 @@
         <input type="number" class="form-control" ng-model="vm.newBook.rating" placeholder="Rating">
     </div>
     <label>Author:</label>
-    <select-authors-list ng-model="vm.newBook.author_id" select-model="vm.newBook.author_id"></select-authors-list>
-
+    <select-collection-items collection="'author'" ng-model="vm.newBook.author_id" select-model="vm.newBook.author_id._id"></select-collection-items>
     <div class="form-group">
       <label for="description">Description:</label>
       <textarea ng-model="vm.newBook.description" class="form-control" rows="3" id="description"></textarea>

@@ -10,9 +10,9 @@
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr class="bg-primary">
-            <th ng-click="vm.sortType = 'title'; vm.sortReverse = !vm.sortReverse">
+            <th ng-click="vm.sortType = 'name'; vm.sortReverse = !vm.sortReverse">
                 Title
-                <span ng-show="vm.sortType == 'title'">
+                <span ng-show="vm.sortType == 'name'">
                     <span class="fa fa-caret-down pull-right" ng-show="!vm.sortReverse"></span>
                     <span class="fa fa-caret-up pull-right" ng-show="vm.sortReverse"></span>
                 </span>
@@ -33,7 +33,7 @@
             <th>Actions</th>
         </tr>
         <tr ng-repeat="book in vm.booksList | filter:search:strict | orderBy:vm.sortType:vm.sortReverse" ng-class-odd="'bg-info'">
-            <td>{{book.title}}</td>
+            <td>{{book.name}}</td>
             <td class="hidden-xs">{{book.author_id.name}}</td>
             <td class="hidden-xs">{{book.category}}</td>
             <td>
