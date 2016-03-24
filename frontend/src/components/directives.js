@@ -4,6 +4,7 @@ import StarRating from './shared/rating';
 import InfoItemButton from './shared/infoItemButton';
 import Navigation from './navigation';
 import SelectCollectionItems from './shared/selectCollectionItems'
+import DropdownMultiSelect from './shared/multiSelect'
 
 var moduleName = 'books.directives';
 
@@ -13,6 +14,7 @@ module.exports = angular.module(moduleName, [])
     .directive('starRating', () => new StarRating)
     .directive('infoItemButton', () => new InfoItemButton)
     .directive('navigation', () => new Navigation)
-    .directive('selectCollectionItems', () => new SelectCollectionItems);
+    .directive('selectCollectionItems', () => new SelectCollectionItems)
+    .directive('dropdownMultiSelect', () => new DropdownMultiSelect);
 
 export default moduleName;
