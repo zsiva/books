@@ -4,6 +4,8 @@ class AuthorInfoController {
         this.editorEnabled = false;
         this.authorData = authorData;
         this.booksList = authorData.books_id;
+        this.booksList.forEach((book, i = 0) => book.pos = ++i);
+
         this.authorsSelected = [];
     }
 
