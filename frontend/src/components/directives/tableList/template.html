@@ -1,7 +1,7 @@
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr class="bg-primary">
-            <th ng-repeat='itemHeader in vm.header'>{{itemHeader}}</th>
+            <th class="text-capitalize" ng-repeat='itemHeader in vm.header'>{{itemHeader}}</th>
         </tr>
         <tr ng-repeat="object in vm.data" ng-class-odd="'bg-info'">
             <td ng-repeat="column in vm.header">{{object[column] }}</td>

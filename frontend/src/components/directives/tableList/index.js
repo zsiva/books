@@ -10,17 +10,20 @@ class TableList {
         this.template = require('./template.html');
         this.restrict = 'EA';
         this.controllerAs = 'vm';
-        this.bindToController = true;
-        this.controller = TableListController;
-        this.scope = {
+        this.bindToController = {
             data: '='
-        }
+        };
+        this.controller = TableListController;
+        this.scope = {};
     }
 }
 
 class TableListController {
     constructor () {
-        this.header = Object.keys(this.data[0]);
+        if(this.data.length > 0) {
+            this.data.forEach(function(v){ delete v._id });
+            this.header = Object.keys(this.data[0]).reverse();
+        }
     }
 }
 export default TableList;

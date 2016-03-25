@@ -4,7 +4,9 @@ class authorListController {
         this.modalService = modalService;
         this.hidden = true;
         this.sortType = 'name';
-        this.authorsList = authors;
+        authors.forEach((book, i = 0) => book.name);
+
+        this.authorsList = authors.map((a) => { return {'name': a.name};});
 
         this.modalOptions = {
             closeButtonText: 'Cancel',
