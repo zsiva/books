@@ -1,12 +1,12 @@
 <h3 class="bg-info main-title">{{vm.authorData.name}}</h3>
 <div ng-show="vm.editorEnabled">
-    <div class="input-group">
+    <div class="form-group">
         <label>Name: </label>
         <input ng-model="vm.authorData.name" placeholder="Author name">
     </div>
-    <div class="input-group">
-        <label>Select book</label>
-        <select-collection-items collection="'book'" ng-model="vm.authorData.books_id" select-model="vm.authorData.books_id._id"></select-collection-items>
+    <div class="form-group">
+        <label>Choose author's books:</label>
+        <multi-select collection="'book'" ng-model="vm.authorData.books_id" selected-model="vm.authorsSelected" button-text="'Select book'"></multi-select>
     </div>
 </div>
 <div ng-hide="vm.editorEnabled">
@@ -30,9 +30,6 @@
         </table>
     </div>
 </div>
-Multiselect
-<dropdown-multi-select options="vm.booksList" selected-model="example1model"></dropdown-multi-select>
-
 <div class="pull-left">
     <button class="btn btn btn-warning fa fa-chevron-left" ui-sref="authors-list">&nbsp;Back</button>
 </div>

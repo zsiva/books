@@ -1,17 +1,16 @@
-import STATES from '../../../constants/states';
-
 class AuthorInfoController {
-    constructor(authorData, $state, AuthorService) {
+    constructor(authorData, AuthorService) {
         this.authorService = AuthorService;
         this.editorEnabled = false;
         this.authorData = authorData;
         this.booksList = authorData.books_id;
-        this.$state = $state;
+        this.authorsSelected = [];
     }
 
     saveAuthor (){
+        this.authorData.books_id = this.authorsSelected;
         this.authorService.updateItem(this.authorData);
-        this.$state.go(STATES.AUTHORS_LIST);
+        this.editorEnabled = false;
     };
 }
 
