@@ -12,6 +12,7 @@ router.get('/api/books/:book_slug?', (req, res) => {
     }
     Book
     .find(searchQuery)
+    .sort([['name', 'ascending']])
     .populate('author_id', 'name')
     .exec((err, books) => {
         if (err) throw err;
@@ -43,11 +44,12 @@ router.get('/api/authors/:author_slug?', (req, res) => {
       }
 
      Author.find(searchQuery)
-         .populate('books_id', 'name category')
-         .exec( (err, authors) => {
-           if (err) throw err;
-           res.status(200).json(authors);
-         });
+        .sort([['name', 'ascending']])
+        .populate('books_id', 'name category')
+        .exec( (err, authors) => {
+            if (err) throw err;
+            res.status(200).json(authors);
+        });
 });
 
 router.post('/api/createauthor', (req, res) => {
