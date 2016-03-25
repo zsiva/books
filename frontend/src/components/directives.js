@@ -1,10 +1,10 @@
-import DeleteItemButton from './shared/deleteItemButton';
-import TableList from './shared/tableList';
-import StarRating from './shared/rating';
-import InfoItemButton from './shared/infoItemButton';
+import DeleteItemButton from './directives/deleteItemButton';
+import TableList from './directives/tableList';
+import StarRating from './directives/rating';
+import InfoItemButton from './directives/infoItemButton';
 import Navigation from './navigation';
-import SelectCollectionItems from './shared/selectCollectionItems'
-import DropdownMultiSelect from './shared/multiSelect'
+import SelectCollectionItems from './directives/selectCollectionItems'
+import MultiSelect from './directives/multiSelect'
 
 var moduleName = 'books.directives';
 
@@ -15,6 +15,6 @@ module.exports = angular.module(moduleName, [])
     .directive('infoItemButton', () => new InfoItemButton)
     .directive('navigation', () => new Navigation)
     .directive('selectCollectionItems', () => new SelectCollectionItems)
-    .directive('dropdownMultiSelect', () => new DropdownMultiSelect);
+    .directive('multiSelect', () => new MultiSelect);
 
 export default moduleName;
