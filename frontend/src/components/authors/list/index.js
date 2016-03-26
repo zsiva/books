@@ -4,7 +4,6 @@ class authorListController {
         this.modalService = modalService;
         this.hidden = true;
         this.sortType = 'name';
-        authors.forEach((book, i = 0) => book.name);
 
         this.authorsList = authors.map((a) => { return {'name': a.name};});
 
