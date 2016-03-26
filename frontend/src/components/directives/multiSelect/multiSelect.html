@@ -1,0 +1,14 @@
+<div class="multiselect-parent btn-group dropdown-multiselect">
+    <button type="button" class="dropdown-toggle" ng-class="vm.settings.buttonClasses" ng-click="vm.toggleDropdown()">
+        {{vm.buttonText}}&nbsp;<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-form" ng-style="{display: vm.open ? 'block' : 'none', height : vm.settings.scrollable ? vm.settings.scrollableHeight : 'auto' }" style="overflow: scroll" >
+        <li role="presentation" ng-repeat="option in vm.options">
+            <a role="menuitem" tabindex="-1" ng-click="vm.checkboxClick($event, vm.getPropertyForObject(option, vm.settings.idProp), vm.getPropertyForObject(option, vm.settings.titleProp))">
+                <div class="checkbox">
+                    <label><input class="checkboxInput" type="checkbox"/> {{option.name}}</label>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
