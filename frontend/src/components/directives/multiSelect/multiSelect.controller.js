@@ -18,10 +18,22 @@ class MultiSelectController {
 
         ItemService.setCollection(this.collection);
         Promise.resolve(ItemService.getAllItems()).then((data) => this.options = data);
+
+        this.closeOnBlur();
     }
 
     toggleDropdown() {
         this.open = !this.open;
+    }
+
+    closeOnBlur() {
+        let dropdown = angular.element(document.getElementsByClassName("dropdown-menu"));
+        angular.element(document).on('click', (e) => {
+            let parent = e.target.parentElement;
+            if(parent && !parent.className.includes('multiselect-parent') && dropdown[0].offsetHeight > 0) {
+                this.$scope.$apply(() => this.open = false);
+            }
+        });
     }
 
     getPropertyForObject(object, property) {
