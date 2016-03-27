@@ -1,59 +1,45 @@
 <h3 class="bg-info main-title">{{vm.bookData.name}}</h3>
-<div ng-hide="vm.editorEnabled">
-    <h4>Author</h4>
-    <p>{{vm.bookData.author_id.name}}</p>
-    <h4>Bought:</h4>
-    <p> {{vm.bookData.bought_on | date:'dd-MM-yyyy'}} </p>
-    <h4>Category:</h4>
-    <p>{{vm.bookData.category}} </p>
-    <h4>Language:</h4>
-    <p>{{vm.bookData.language}}</p>
-    <h4>Format:</h4>
-    <p>{{vm.bookData.format}}</p>
-    <h4>Rating:</h4>
-    <star-rating score="vm.bookData.rating" max="5" readonly="true"></star-rating>
-    <h4>Description:</h4>
-    <p>{{vm.bookData.description}}</p>
+<div class="input-group">
+    <div class="input-group-addon"><i class="fa fa-book"></i></div>
+    <input type="text" class="form-control" ng-model="vm.bookData.name" placeholder="Book name" ng-disabled="vm.editorDisabled">
 </div>
-<div ng-show="vm.editorEnabled">
-    <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-book"></i></div>
-        <input type="text" class="form-control" ng-model="vm.bookData.name" placeholder="Book name">
-    </div>
-    <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-        <input type="text" class="form-control" ng-model="vm.bookData.bought_on" placeholder="Bought date">
-    </div>
-    <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-tags"></i></div>
-        <input type="text" class="form-control" ng-model="vm.bookData.category" placeholder="Category">
-    </div>
-    <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-file"></i></div>
-        <input type="text" class="form-control" ng-model="vm.bookData.format" placeholder="Format">
-    </div>
-    <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-language"></i></div>
-        <input type="text" class="form-control" ng-model="vm.bookData.language" placeholder="Language">
-    </div>
-    <div class="form-group">
-        <label>Rating:</label>
-        <star-rating score="vm.bookData.rating" ng-model="vm.bookData.rating" max="5"></star-rating>
-    </div>
-    <div class="form-group">
-        <label>Author:</label>
-        <select-collection-items collection="'author'" ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id._id"></select-collection-items>
-    </div>
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea ng-model="vm.bookData.description" class="form-control" rows="3" id="description"></textarea>
-    </div>
+<div class="input-group">
+    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+    <input type="text" class="form-control" ng-model="vm.bookData.bought_on" placeholder="Bought date" ng-disabled="vm.editorDisabled">
+</div>
+<div class="input-group">
+    <div class="input-group-addon"><i class="fa fa-tags"></i></div>
+    <input type="text" class="form-control" ng-model="vm.bookData.category" placeholder="Category" ng-disabled="vm.editorDisabled">
+</div>
+<div class="input-group">
+    <div class="input-group-addon"><i class="fa fa-file"></i></div>
+    <input type="text" class="form-control" ng-model="vm.bookData.format" placeholder="Format" ng-disabled="vm.editorDisabled">
+</div>
+<div class="input-group">
+    <div class="input-group-addon"><i class="fa fa-language"></i></div>
+    <input type="text" class="form-control" ng-model="vm.bookData.language" placeholder="Language" ng-disabled="vm.editorDisabled">
+</div>
+<div class="input-group" ng-show="vm.editorDisabled">
+    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+    <input type="text" class="form-control" placeholder="{{vm.bookData.author_id.name}}" ng-disabled="vm.editorDisabled">
+</div>
+<div class="form-group" ng-hide="vm.editorDisabled">
+    <label>Author:</label>
+    <select-collection-items collection="'author'" ng-model="vm.bookData.author_id" select-model="vm.bookData.author_id._id"></select-collection-items>
+</div>
+<div class="form-group">
+    <label for="description">Description:</label>
+    <textarea ng-model="vm.bookData.description" class="form-control" rows="3" id="description" ng-disabled="vm.editorDisabled"></textarea>
+</div>
+<div class="form-group">
+    <label>Rating:</label>
+    <star-rating score="vm.bookData.rating" ng-model="vm.bookData.rating" max="5" readonly="vm.editorDisabled"></star-rating>
 </div>
 <div class="pull-left">
     <button class="btn btn btn-warning fa fa-chevron-left" ui-sref="books-list">&nbsp;Back</button>
 </div>
 <div class="pull-right">
-    <button ng-hide="vm.editorEnabled" ng-click="vm.editorEnabled=!vm.editorEnabled" class="btn btn-primary fa fa-pencil">&nbsp;Edit</button>
-    <button ng-show="vm.editorEnabled" ng-click="vm.editorEnabled=!vm.editorEnabled" class="btn btn-danger fa fa-times">&nbsp;Cancel</button>
-    <button ng-show="vm.editorEnabled" ng-click="vm.saveBook()" class="btn btn-primary fa fa-save">&nbsp;Save</button>
+    <button ng-show="vm.editorDisabled" ng-click="vm.editorDisabled=!vm.editorDisabled" class="btn btn-primary fa fa-pencil">&nbsp;Edit</button>
+    <button ng-hide="vm.editorDisabled" ng-click="vm.editorDisabled=!vm.editorDisabled" class="btn btn-danger fa fa-times">&nbsp;Cancel</button>
+    <button ng-hide="vm.editorDisabled" ng-click="vm.saveBook()" class="btn btn-primary fa fa-save">&nbsp;Save</button>
 </div>

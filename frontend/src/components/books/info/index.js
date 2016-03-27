@@ -3,7 +3,7 @@ import STATES from '../../../constants/states';
 class BookInfoController {
     constructor(bookData, $state, BookService) {
         this.bookService = BookService;
-        this.editorEnabled = false;
+        this.editorDisabled = true;
         this.bookData = bookData;
         this.$state = $state;
     }
